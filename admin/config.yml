@@ -2,8 +2,17 @@ backend:
   name: git-gateway
   branch: main
 
+# Config para permitir registro abierto
+publish_mode: "editorial_workflow"
+
 media_folder: "images"
 public_folder: "/images"
+
+# Config de identidad abierta
+identity:
+  enable_email_identity: true
+  registration: "open"
+  allowed_email_domains: []
 
 collections:
   - name: "articles"
