@@ -2,29 +2,67 @@ backend:
   name: git-gateway
   branch: main
 
-# Config para permitir registro abierto
 publish_mode: "editorial_workflow"
 
 media_folder: "images"
 public_folder: "/images"
 
-# Config de identidad abierta
-identity:
-  enable_email_identity: true
-  registration: "open"
-  allowed_email_domains: []
-
 collections:
+  - name: "articulos"
+    label: "Lista de Artículos"
+    folder: "data"
+    extension: json
+    format: json
+    create: true
+    slug: "articulos"
+    fields:
+      - {label: "Artículos", name: "articulos", widget: "list", fields: [
+          {label: "ID", name: "id", widget: "string"},
+          {label: "Slug", name: "slug", widget: "string"},
+          {label: "Título", name: "titulo", widget: "string"},
+          {label: "Descripción", name: "descripcion", widget: "text"},
+          {label: "Fecha", name: "fecha", widget: "string"},
+          {label: "Categoría", name: "categoria", widget: "select", options: [
+            {label: "Geopolítica", value: "Geopolítica"},
+            {label: "Economía", value: "Economía"},
+            {label: "Élites", value: "Élites"},
+            {label: "Tecnología", value: "Tecnología"}
+          ]},
+          {label: "Video ID de YouTube", name: "video_id", widget: "string"},
+          {label: "Tiempo (minutos)", name: "time", widget: "number"},
+          {label: "Destacado", name: "destacado", widget: "boolean"}
+        ]}
+
   - name: "articles"
     label: "Artículos"
     folder: "articles"
     create: true
-    slug: "{{slug}}/index"
+    slug: "{{slug}}"
     fields:
       - {label: "Título", name: "title", widget: "string"}
       - {label: "Fecha de Publicación", name: "date", widget: "datetime"}
       - {label: "Descripción breve", name: "description", widget: "text"}
-      - {label: "Categoría", name: "category", widget: "select", options: [{label: "Geopolítica", value: "geopolitica"}, {label: "Economía", value: "economia"}, {label: "Élites", value: "elites"}, {label: "Tecnología", value: "tecnologia"}, {label: "Tecnocracia", value: "tecnocracia"}]}
+      - {label: "Categoría", name: "category", widget: "select", options: [{label: "Geopolítica", value: "Geopolítica"}, {label: "Economía", value: "Economía"}, {label: "Élites", value: "Élites"}, {label: "Tecnología", value: "Tecnología"}, {label: "Tecnocracia", value: "Tecnocracia"}]}
       - {label: "Tags (separados por coma)", name: "tags", widget: "string", required: false}
-      - {label: "Video de YouTube (ID)", name: "video_id", widget: "string", required: false, hint: "Ej: ABC123 de youtube.com/watch?v=ABC123"}
+      - {label: "Autor", name: "author", widget: "string", default: "Nicolás Martínez Lage"}
+      - {label: "Artículo destacado", name: "featured", widget: "boolean", default: false, required: false}
+      - {label: "Video de YouTube", name: "video_id", widget: "string", required: false, hint: "Pega la URL completa o solo el ID"}
+      - {label: "Imagen destacada", name: "image", widget: "image", required: false}
+      - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
       - {label: "Contenido", name: "body", widget: "markdown"}
+
+  - name: "articulos_json"
+    label: "Lista de Artículos (Home)"
+    file: "data/articulos.json"
+    fields:
+      - {label: "Artículos", name: "articulos", widget: "list", fields: [
+          {label: "ID", name: "id", widget: "string"},
+          {label: "Slug", name: "slug", widget: "string"},
+          {label: "Título", name: "titulo", widget: "string"},
+          {label: "Descripción", name: "descripcion", widget: "text"},
+          {label: "Fecha", name: "fecha", widget: "string"},
+          {label: "Categoría", name: "categoria", widget: "string"},
+          {label: "Video ID", name: "video_id", widget: "string"},
+          {label: "Tiempo (min)", name: "time", widget: "number"},
+          {label: "Destacado", name: "destacado", widget: "boolean"}
+        ]}

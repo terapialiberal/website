@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>{% if page.title %}{{ page.title }} | {% endif %}Terapia Liberal</title>
+    <meta name="title" content="{% if page.title %}{{ page.title }} | {% endif %}Terapia Liberal">
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Análisis independiente sobre economía, geopolítica y filosofía liberal.{% endif %}">
+    <meta name="author" content="Nicolás Martínez Lage">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{% if page.layout == 'article' %}article{% else %}website{% endif %}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Terapia Liberal{% endif %}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}Análisis independiente sobre economía, geopolítica y filosofía liberal.{% endif %}">
+    <meta property="og:image" content="{% if page.image %}{{ page.image }}{% elsif page.video_id %}https://img.youtube.com/vi/{{ page.video_id }}/maxresdefault.jpg{% else %}https://yt3.googleusercontent.com/ZzVyDrXt4x8YWoKbISHZzC9CCtkEPCN4GRET1Xxf_wssNyw7mfN-xTbBmpwEJHO0DRQrg0Dgug=s900-c-k-c0x00ffffff-no-rj{% endif %}">
+    <meta property="og:site_name" content="Terapia Liberal">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ page.url | absolute_url }}">
+    <meta property="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}Terapia Liberal{% endif %}">
+    <meta property="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}Análisis independiente sobre economía, geopolítica y filosofía liberal.{% endif %}">
+    <meta property="twitter:image" content="{% if page.image %}{{ page.image }}{% elsif page.video_id %}https://img.youtube.com/vi/{{ page.video_id }}/maxresdefault.jpg{% else %}https://yt3.googleusercontent.com/ZzVyDrXt4x8YWoKbISHZzC9CCtkEPCN4GRET1Xxf_wssNyw7mfN-xTbBmpwEJHO0DRQrg0Dgug=s900-c-k-c0x00ffffff-no-rj{% endif %}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://yt3.googleusercontent.com/ZzVyDrXt4x8YWoKbISHZzC9CCtkEPCN4GRET1Xxf_wssNyw7mfN-xTbBmpwEJHO0DRQrg0Dgug=s900-c-k-c0x00ffffff-no-rj">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#d4af37',
+                        'gold-light': '#e5c158',
+                        red: '#dc2626',
+                    }
+                }
+            }
+        }
+    </script>
+</head>

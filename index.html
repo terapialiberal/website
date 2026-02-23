@@ -3,667 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terapia Liberal | Análisis Independiente</title>
-    <meta name="description" content="Análisis independiente sobre economía, geopolítica y filosofía liberal">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Terapia Liberal | Análisis Independiente">
-    <meta property="og:description" content="Análisis independiente sobre economía, geopolítica y filosofía liberal">
-    <meta property="og:type" content="website">
-
-    <!-- Tailwind CSS -->
+    <title>Terapia Liberal | Análisis</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <!-- Google Fonts - Modernas -->
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: '#d4af37',
-                        'gold-light': '#e5c158',
-                        red: '#dc2626',
-                    }
-                }
-            }
-        }
+        tailwind.config = { theme: { extend: { colors: { gold: '#d4af37', red: '#dc2626' } } } }
     </script>
-
     <style>
-        :root {
-            --gold: #d4af37;
-            --gold-light: #e5c158;
-            --red: #dc2626;
-        }
-        body {
-            font-family: 'Newsreader', Georgia, serif;
-            background: linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);
-            color: #f5f5f5;
-            min-height: 100vh;
-        }
-        body h1, body h2, body h3, body h4, body h5, body h6,
-        body .nav-link, body .badge {
-            font-family: 'DM Sans', sans-serif;
-        }
-        .gold-text { color: var(--gold); }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        @keyframes pulse-gold {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-            50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
-        }
-        .animate-fade-in { animation: fadeInUp 0.5s ease forwards; }
-        .animate-delay-1 { animation-delay: 0.1s; }
-        .animate-delay-2 { animation-delay: 0.2s; }
-        .animate-delay-3 { animation-delay: 0.3s; }
-
-        /* Loading skeleton */
-        .skeleton {
-            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-        }
-
-        /* Smooth scroll */
-        html { scroll-behavior: smooth; }
-
-        /* Badge styles */
-        .badge {
-            background: #222;
-            color: #aaa;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.65rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .badge:hover, .badge.active {
-            background: var(--gold);
-            color: #000;
-        }
-        .badge-gold {
-            background: var(--gold);
-            color: #000;
-        }
-
-        /* Article list */
-        .article-list-item {
-            border-bottom: 1px solid #222;
-            padding: 2rem 0;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
-        }
-        .article-list-item:hover {
-            background: rgba(255,255,255,0.02);
-            padding-left: 1rem;
-            padding-right: 1rem;
-            border-radius: 8px;
-        }
-        .article-list-item:last-child { border-bottom: none; }
-
-        /* Video thumbnail */
-        .video-thumbnail {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            cursor: pointer;
-        }
-        .video-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-        .video-thumbnail:hover img { transform: scale(1.05); }
-        .video-thumbnail::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        .play-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(212, 175, 55, 0.9);
-            color: #000;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-        .video-thumbnail:hover .play-icon {
-            transform: translate(-50%, -50%) scale(1.15);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
-        }
-
-        /* Newsletter */
-        .newsletter-box {
-            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 2.5rem;
-        }
-        .newsletter-input {
-            background: #111;
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 12px 16px;
-            color: #fff;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-        .newsletter-input:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
-        }
-
-        /* Reading progress bar */
-        .reading-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--gold), var(--red));
-            z-index: 1000;
-            transition: width 0.1s ease;
-        }
-
-        /* Search */
-        .search-input {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 8px 12px 8px 36px;
-            color: #fff;
-            font-size: 0.875rem;
-            transition: all 0.3s ease;
-        }
-        .search-input:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
-        }
-        .search-container { position: relative; }
-        .search-icon {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #666;
-            font-size: 14px;
-        }
+        :root { --gold: #d4af37; --red: #dc2626; }
+        body { font-family: 'Merriweather', serif; background: #0a0a0a; color: #f5f5f5; }
+        h1, h2, h3, h4, h5, h6, .badge { font-family: 'Inter', sans-serif; }
+        .card { background: #111; border: 1px solid #222; border-radius: 16px; overflow: hidden; transition: all 0.3s; }
+        .card:hover { border-color: var(--gold); transform: translateY(-4px); }
+        .card-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+        .play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--gold); color: #000; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .post-title { transition: color 0.2s; }
+        .post-title:hover { color: var(--gold); }
     </style>
 </head>
-<body class="bg-gray-950">
-    <!-- Reading Progress Bar -->
-    <div class="reading-progress" id="readingProgress" style="width: 0%;"></div>
-
-    <!-- Navigation -->
-    <nav class="border-b border-gray-800 sticky top-0" style="background-color: #000000; z-index: 50;">
-        <div class="max-w-5xl mx-auto px-6 py-4">
-            <div class="flex items-center justify-between gap-4">
-                <a href="/" class="flex items-center gap-3 flex-shrink-0">
-                    <img src="https://yt3.googleusercontent.com/ZzVyDrXt4x8YWoKbISHZzC9CCtkEPCN4GRET1Xxf_wssNyw7mfN-xTbBmpwEJHO0DRQrg0Dgug=s900-c-k-c0x00ffffff-no-rj"
-                         alt="Terapia Liberal"
-                         class="w-10 h-10 rounded-full">
-                    <span class="text-xl font-bold text-white hidden sm:block">Terapia Liberal</span>
-                </a>
-
-                <!-- Search -->
-                <div class="search-container flex-1 max-w-xs hidden md:block">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" id="searchInput" placeholder="Buscar..." class="search-input w-full">
-                </div>
-
-                <div class="flex items-center gap-5 flex-shrink-0">
-                    <a href="#articulos" class="text-gray-400 hover:text-gold nav-link text-sm font-medium transition-colors hidden sm:block">Artículos</a>
-                    <a href="https://www.youtube.com/@terapialiberal" target="_blank" class="text-gray-400 hover:text-gold nav-link text-sm transition-colors">
-                        <i class="fab fa-youtube text-lg"></i>
-                    </a>
-                    <a href="https://x.com/terapia_liberal" target="_blank" class="text-gray-400 hover:text-gold nav-link text-sm transition-colors">
-                        <i class="fa-brands fa-x-twitter text-lg"></i>
-                    </a>
-                    <a href="https://www.patreon.com/terapialiberal" target="_blank" class="text-gray-400 hover:text-gold nav-link text-sm transition-colors">
-                        <i class="fab fa-patreon text-lg"></i>
-                    </a>
-                </div>
+<body class="bg-black">
+    <!-- Header -->
+    <nav class="border-b border-gray-800 py-4" style="background: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.8) 100%);">
+        <div class="max-w-5xl mx-auto px-6 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3">
+                <img src="https://yt3.googleusercontent.com/ZzVyDrXt4x8YWoKbISHZzC9CCtkEPCN4GRET1Xxf_wssNyw7mfN-xTbBmpwEJHO0DRQrg0Dgug=s900-c-k-c0x00ffffff-no-rj" class="w-10 h-10 rounded-full">
+                <span class="text-xl font-bold text-white">Terapia Liberal</span>
+            </a>
+            <div class="flex gap-4">
+                <a href="https://www.youtube.com/@terapialiberal" target="_blank" class="text-gray-400 hover:text-gold"><i class="fab fa-youtube"></i></a>
+                <a href="https://x.com/terapia_liberal" target="_blank" class="text-gray-400 hover:text-gold"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.patreon.com/terapialiberal" target="_blank" class="text-gray-400 hover:text-gold"><i class="fab fa-patreon"></i></a>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-5xl mx-auto px-6 py-12">
-        <!-- Newsletter Header -->
-        <div class="mb-16">
-            <div class="newsletter-box flex flex-col md:flex-row items-center justify-between gap-8">
-                <div class="text-center md:text-left">
-                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-3">Análisis para mentes críticas</h1>
-                    <p class="text-gray-400 text-lg">Investigaciones profundas sobre economía, geopolítica y filosofía liberal.</p>
-                    <div class="flex items-center gap-4 mt-4 justify-center md:justify-start">
-                        <span class="flex items-center gap-2 text-gray-500 text-sm">
-                            <i class="fas fa-play-circle text-gold"></i>
-                            <span id="videoCount">0</span> videos
-                        </span>
-                        <span class="flex items-center gap-2 text-gray-500 text-sm">
-                            <i class="fas fa-file-alt text-gold"></i>
-                            <span id="articleCount">0</span> artículos
-                        </span>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-3">
-                    <a href="https://www.youtube.com/@terapialiberal" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 rounded-lg font-semibold text-sm whitespace-nowrap" style="background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%); color: #000;">
-                        <i class="fab fa-youtube text-lg"></i>
-                        Suscribirse
-                    </a>
-                    <a href="#articulos" class="inline-flex items-center justify-center gap-2 px-6 py-2 rounded-lg font-medium text-sm text-gray-400 border border-gray-700 hover:border-gold hover:text-gold transition-colors">
-                        <i class="fas fa-arrow-right"></i>
-                        Ver artículos
-                    </a>
-                </div>
-            </div>
+    <main class="max-w-5xl mx-auto px-6 py-10">
+        <!-- Hero -->
+        <div class="mb-12 text-center">
+            <h1 class="text-3xl font-bold text-white mb-2">Análisis para mentes críticas</h1>
+            <p class="text-gray-500">Investigaciones profundas sobre economía, geopolítica y filosofía liberal</p>
         </div>
 
-        <!-- Category Filters -->
-        <div class="mb-10 flex flex-wrap gap-2" id="categoryFilters">
-            <span class="badge active" data-category="all">Todos</span>
-            <span class="badge" data-category="geopolitica">Geopolítica</span>
-            <span class="badge" data-category="economia">Economía</span>
-            <span class="badge" data-category="elites">Élites</span>
-            <span class="badge" data-category="tecnologia">Tecnología</span>
-            <span class="badge" data-category="tecnocracia">Tecnocracia</span>
+        <!-- Newsletter -->
+        <div class="bg-gray-900 rounded-lg p-6 mb-12 text-center border border-gray-800">
+            <p class="text-gray-300 mb-3"><strong>📬 Suscribite</strong> para recibir nuevos análisis cada semana</p>
+            <form class="flex gap-2 max-w-sm mx-auto" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
+                <input type="email" placeholder="tu@email.com" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded text-white text-sm" required>
+                <button class="px-4 py-2 rounded text-sm font-semibold text-white" style="background: linear-gradient(135deg, var(--gold), var(--red));">Suscribirse</button>
+            </form>
         </div>
 
-        <!-- Featured Article -->
-        <section class="mb-16" id="featured">
+        <!-- Featured -->
+        <section class="mb-12" id="featured">
+            <div class="text-center text-gray-500 py-8">Cargando artículos...</div>
         </section>
 
-        <!-- Articles List -->
-        <section class="mb-16" id="articulos">
-            <div class="flex items-center justify-between mb-8">
-                <h2 class="text-xl font-semibold text-white">Artículos Recientes</h2>
-                <span class="text-gray-500 text-sm" id="showingCount">Mostrando 0 artículos</span>
-            </div>
-            <div id="articles-list">
-            </div>
-            <div id="noResults" class="hidden text-center py-12">
-                <i class="fas fa-search text-gray-600 text-4xl mb-4"></i>
-                <p class="text-gray-500">No se encontraron artículos</p>
-            </div>
-        </section>
-
-        <!-- Newsletter Signup -->
-        <section class="mb-16">
-            <div class="newsletter-box text-center">
-                <h3 class="text-2xl font-bold text-white mb-3">No te pierdas ningún análisis</h3>
-                <p class="text-gray-400 mb-6">Recibe una notificación cuando publiquemos nuevo contenido.</p>
-                <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="handleNewsletter(event)">
-                    <input type="email" placeholder="Tu email" class="newsletter-input flex-1" required>
-                    <button type="submit" class="px-6 py-3 rounded-lg font-semibold text-sm whitespace-nowrap" style="background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%); color: #000;">
-                        <i class="fas fa-bell mr-2"></i>Suscribirse
-                    </button>
-                </form>
-                <p class="text-gray-600 text-xs mt-3" id="newsletterMsg"></p>
-            </div>
-        </section>
-
-        <!-- About -->
-        <section class="border-t border-gray-800 pt-12">
-            <div class="flex flex-col md:flex-row gap-10 items-start">
-                <img src="https://i.postimg.cc/8C3ZkxNy/1660176107980.jpg" alt="Nicolás Martínez Lage" class="w-28 h-28 rounded-full object-cover ring-2 ring-gold/30">
-                <div>
-                    <h3 class="font-bold text-white text-xl mb-2">Nicolás Martínez Lage</h3>
-                    <p class="text-gray-500 text-sm mb-4">Analista Independiente</p>
-                    <p class="text-gray-400 leading-relaxed max-w-2xl">
-                        Plataforma de análisis independiente que conecta eventos económicos y geopolíticos globales con las agendas de poder.
-                    </p>
-                    <div class="flex gap-3 mt-6">
-                        <span class="badge">Análisis Económico</span>
-                        <span class="badge">Geopolítica</span>
-                        <span class="badge">Filosofía Liberal</span>
-                    </div>
-                </div>
-            </div>
+        <!-- Grid cards -->
+        <section>
+            <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-6">Últimos artículos</h2>
+            <div class="grid md:grid-cols-3 gap-6" id="articles-grid"></div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-gray-800 mt-16">
-        <div class="max-w-5xl mx-auto px-6 py-10">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="flex items-center gap-3">
-                    <img src="https://yt3.googleusercontent.com/ZzVyDrXt4x8YWoKbISHZzC9CCtkEPCN4GRET1Xxf_wssNyw7mfN-xTbBmpwEJHO0DRQrg0Dgug=s900-c-k-c0x00ffffff-no-rj"
-                         alt="Terapia Liberal"
-                         class="w-8 h-8 rounded-full">
-                    <span class="text-sm font-semibold text-white">Terapia Liberal</span>
-                </div>
-                <div class="flex items-center gap-5">
-                    <a href="/rss.xml" class="text-gray-500 hover:text-gold transition-colors" title="RSS Feed">
-                        <i class="fas fa-rss text-lg"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@terapialiberal" target="_blank" class="text-gray-500 hover:text-gold transition-colors">
-                        <i class="fab fa-youtube text-lg"></i>
-                    </a>
-                    <a href="https://x.com/terapia_liberal" target="_blank" class="text-gray-500 hover:text-gold transition-colors">
-                        <i class="fa-brands fa-x-twitter text-lg"></i>
-                    </a>
-                    <a href="https://www.patreon.com/terapialiberal" target="_blank" class="text-gray-500 hover:text-gold transition-colors">
-                        <i class="fab fa-patreon text-lg"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="mt-8 pt-8 border-t border-gray-800 text-center">
-                <p class="text-gray-600 text-xs">© 2026 Terapia Liberal. Análisis independiente para mentes críticas.</p>
-            </div>
-        </div>
+    <footer class="border-t border-gray-800 mt-16 py-8 text-center">
+        <p class="text-gray-600 text-sm">© 2026 Terapia Liberal · Análisis independiente</p>
     </footer>
 
-    <!-- Back to Top -->
-    <button id="backToTop" class="fixed bottom-8 right-8 bg-gold text-black w-12 h-12 rounded-full shadow-lg opacity-0 transition-all duration-300 flex items-center justify-center cursor-pointer hover:scale-110" style="opacity: 0; z-index: 100;">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Keyboard Shortcuts Hint -->
-    <div class="fixed bottom-4 left-4 text-gray-600 text-xs hidden lg:block">
-        <span class="bg-gray-900 px-2 py-1 rounded">j</span> siguiente &nbsp;
-        <span class="bg-gray-900 px-2 py-1 rounded">k</span> anterior &nbsp;
-        <span class="bg-gray-900 px-2 py-1 rounded">/</span> buscar
-    </div>
-
     <script>
-        // Articles with categories and reading time
-        const articles = [
-            {
-                fecha: "07/02/2026",
-                titulo: "La Teoría del Rimland y el Nuevo Orden Mundial",
-                descripcion: "Análisis sobre la teoría geopolítica de Nicholas Spykman, el Rimland y la arquitectura del poder contemporáneo.",
-                url_html: "articles/terapia-liberal-rimland-nuevo-orden-mundial.html",
-                video_id: "9AMPffjQREY",
-                image_url: "https://img.youtube.com/vi/9AMPffjQREY/hqdefault.jpg",
-                category: "geopolitica",
-                tags: ["Geopolítica", "EE.UU.", "Eurasia"],
-                readingTime: 8
-            },
-            {
-                fecha: "08/01/2026",
-                titulo: "GAZA S.A. y VENEZUELA INC.: Así Operan los Arquitectos de la WW3",
-                descripcion: "Investigación sobre cómo Jared Kushner, Tony Blair y megainversores globales transforman conflictos en oportunidades de negocio.",
-                url_html: "articles/gaza-venezuela-arquitectos-ww3.html",
-                video_id: "9wl8kjn7pV0",
-                image_url: "https://img.youtube.com/vi/9wl8kjn7pV0/hqdefault.jpg",
-                category: "geopolitica",
-                tags: ["Geopolítica", "Medio Oriente"],
-                readingTime: 12
-            },
-            {
-                fecha: "06/12/2025",
-                titulo: "Jeffrey: NADA ES LO QUE PARECE - Análisis de la Red Global de Control",
-                descripcion: "Jeffrey Epstein no era un criminal aislado sino el fixer estratégico de una red global.",
-                url_html: "articles/jeffrey.html",
-                video_id: "5Kx0Acdv0qw",
-                image_url: "https://img.youtube.com/vi/5Kx0Acdv0qw/hqdefault.jpg",
-                category: "elites",
-                tags: ["Élites", "Wall Street"],
-                readingTime: 15
-            },
-            {
-                fecha: "13/11/2025",
-                titulo: "La Matrix del Poder: Quiénes Son los Verdaderos Dueños del Planeta",
-                descripcion: "Dominic Cummings reveló que el gobierno británico es 'teatro guionado'.",
-                url_html: "articles/la-matrix-del-poder.html",
-                video_id: "wsVwjy3z0KE",
-                image_url: "https://img.youtube.com/vi/wsVwjy3z0KE/hqdefault.jpg",
-                category: "elites",
-                tags: ["Élites", "Oligarquía"],
-                readingTime: 10
-            },
-            {
-                fecha: "07/11/2025",
-                titulo: "El MUNDO se FRACTURA: La Batalla por los Recursos Tecnológicos",
-                descripcion: "La guerra económica por minerales críticos y semiconductores que redibuja el mapa del poder.",
-                url_html: "articles/el-mundo-se-fractura-recursos-tecnologicos.html",
-                video_id: "mQX6Ef5QwMk",
-                image_url: "https://img.youtube.com/vi/mQX6Ef5QwMk/hqdefault.jpg",
-                category: "economia",
-                tags: ["Economía", "Tecnología", "China"],
-                readingTime: 9
-            },
-            {
-                fecha: "29/10/2025",
-                titulo: "Cometa 3I/ATLAS: ¿Ritual de Élites o Amenaza Real?",
-                descripcion: "Investigación sobre las conexiones entre el cometa ATLAS, Peter Thiel y Palantir.",
-                url_html: "articles/cometa_atlas_ritual_elites_analisis.html",
-                video_id: "0KJOpBufUc4",
-                image_url: "https://img.youtube.com/vi/0KJOpBufUc4/hqdefault.jpg",
-                category: "tecnologia",
-                tags: ["Tecnología", "Espacio"],
-                readingTime: 11
-            },
-            {
-                fecha: "24/10/2025",
-                titulo: "El Gran Reseteo de la Deuda Mundial",
-                descripcion: "Análisis de la crisis de deuda global y el Great Reset.",
-                url_html: "articles/analisis_great_reset_deuda_mundial.html",
-                video_id: "a9gcaF--yfk",
-                image_url: "https://img.youtube.com/vi/a9gcaF--yfk/hqdefault.jpg",
-                category: "economia",
-                tags: ["Economía", "Deuda"],
-                readingTime: 8
-            },
-            {
-                fecha: "15/10/2025",
-                titulo: "La Lucha por la Supremacía de la IA",
-                descripcion: "Cómo la carrera por la inteligencia artificial redefine el poder global.",
-                url_html: "articles/analisis_supremacia_ia_geopolitica.html",
-                video_id: "-n6Ms6E2tGg",
-                image_url: "https://img.youtube.com/vi/-n6Ms6E2tGg/hqdefault.jpg",
-                category: "tecnologia",
-                tags: ["Tecnología", "IA"],
-                readingTime: 10
-            },
-            {
-                fecha: "10/10/2025",
-                titulo: "Caos Programado: El Camino hacia una Crisis Total",
-                descripcion: "Análisis del plan tecnocrático detrás del caos aparente en Estados Unidos.",
-                url_html: "articles/caos-programado-crisis-total.html",
-                video_id: "ZeZN8skPVZg",
-                image_url: "https://img.youtube.com/vi/ZeZN8skPVZg/hqdefault.jpg",
-                category: "tecnocracia",
-                tags: ["Tecnocracia", "EE.UU."],
-                readingTime: 9
-            },
-            {
-                fecha: "08/10/2025",
-                titulo: "El Avance de la Tecnocracia Digital",
-                descripcion: "El sistema de identificación digital obligatorio y la vigilancia global.",
-                url_html: "articles/analisis_tecnocracia_digital.html",
-                video_id: "LqkHZWvALJ8",
-                image_url: "https://img.youtube.com/vi/LqkHZWvALJ8/hqdefault.jpg",
-                category: "tecnocracia",
-                tags: ["Tecnocracia", "Vigilancia"],
-                readingTime: 8
-            },
-            {
-                fecha: "03/10/2025",
-                titulo: "Wall Street Advierte: 'Primero un Gran Repunte, Luego un Crash'",
-                descripcion: "Las advertencias y el paralelismo histórico con 1929.",
-                url_html: "articles/wall-street-repunte-crash-analisis.html",
-                video_id: "k40I-u2gi50",
-                image_url: "https://img.youtube.com/vi/k40I-u2gi50/hqdefault.jpg",
-                category: "economia",
-                tags: ["Economía", "Wall Street"],
-                readingTime: 7
-            },
-            {
-                fecha: "01/10/2025",
-                titulo: "La División del Mundo en Bloques",
-                descripcion: "La división del mundo en bloques económicos y la reestructuración de la gobernanza mundial.",
-                url_html: "articles/divideyconquista.html",
-                video_id: "3nfqpb2RLNU",
-                image_url: "https://img.youtube.com/vi/3nfqpb2RLNU/hqdefault.jpg",
-                category: "geopolitica",
-                tags: ["Geopolítica", "Bloques"],
-                readingTime: 11
-            }
+        // Datos embebidos como fallback (funciona localmente)
+        const fallbackArticles = [
+            { id: "1", slug: "la-teoria-del-rimland-y-el-nuevo-orden-mundial", titulo: "La Teoría del Rimland y el Nuevo Orden Mundial", descripcion: "Análisis sobre la teoría geopolítica de Nicholas Spykman y la arquitectura del poder contemporáneo.", fecha: "07/02/2026", categoria: "Geopolítica", video_id: "9AMPffjQREY", time: 8, destacado: true },
+            { id: "2", slug: "gaza-sa-y-venezuela-inc", titulo: "GAZA S.A. y VENEZUELA INC.: Así Operan los Arquitectos de la WW3", descripcion: "Cómo Jared Kushner, Tony Blair y megainversores transforman conflictos en oportunidades de negocio.", fecha: "08/01/2026", categoria: "Geopolítica", video_id: "9wl8kjn7pV0", time: 12, destacado: false },
+            { id: "3", slug: "jeffrey-nada-es-lo-que-parece", titulo: "Jeffrey: NADA ES LO QUE PARECE - Análisis de la Red Global de Control", descripcion: "Jeffrey Epstein no era un criminal aislado sino el fixer estratégico de una red global.", fecha: "06/12/2025", categoria: "Élites", video_id: "5Kx0Acdv0qw", time: 15, destacado: false },
+            { id: "4", slug: "la-matrix-del-poder", titulo: "La Matrix del Poder: Quiénes Son los Verdaderos Dueños del Planeta", descripcion: "Dominic Cummings reveló que el gobierno británico es 'teatro guionado'. Las 147 corporaciones que controlan el 40% de la riqueza global.", fecha: "13/11/2025", categoria: "Élites", video_id: "wsVwjy3z0KE", time: 10, destacado: false },
+            { id: "5", slug: "el-mundo-se-fractura-recursos", titulo: "El MUNDO se FRACTURA: La Batalla SECRETA por los Recursos Tecnológicos", descripcion: "La guerra económica por minerales críticos y semiconductores que está redibujando el mapa del poder mundial.", fecha: "07/11/2025", categoria: "Economía", video_id: "mQX6Ef5QwMk", time: 9, destacado: false },
+            { id: "6", slug: "cometa-atlas-ritual-elites", titulo: "Cometa 3I/ATLAS: ¿Ritual de Élites o Amenaza Real?", descripcion: "Investigación sobre las conexiones entre el cometa interestelar ATLAS, Peter Thiel y Palantir.", fecha: "29/10/2025", categoria: "Tecnología", video_id: "0KJOpBufUc4", time: 11, destacado: false }
         ];
 
-        // Sort by date
-        articles.sort((a, b) => new Date(b.fecha.split('/').reverse().join('-')) - new Date(a.fecha.split('/').reverse().join('-')));
+        async function loadArticles() {
+            let articles = [];
 
-        // Update counters
-        document.getElementById('videoCount').textContent = articles.length;
-        document.getElementById('articleCount').textContent = articles.length;
-
-        // Back to top
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            backToTop.style.opacity = window.pageYOffset > 300 ? '1' : '0';
-
-            // Reading progress
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (scrollTop / docHeight) * 100;
-            document.getElementById('readingProgress').style.width = progress + '%';
-        });
-        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        // Featured article
-        const featured = articles[0];
-        document.getElementById('featured').innerHTML = `
-            <a href="${featured.url_html}" class="block group animate-fade-in">
-                <div class="video-thumbnail mb-6">
-                    <img src="https://img.youtube.com/vi/${featured.video_id}/maxresdefault.jpg" alt="${featured.titulo}" class="aspect-video w-full object-cover rounded-xl" onerror="this.src='${featured.image_url}'" loading="eager">
-                    <div class="play-icon"><i class="fas fa-play ml-1"></i></div>
-                </div>
-                <div class="flex items-center gap-3 mb-4 flex-wrap">
-                    <span class="badge badge-gold">Destacado</span>
-                    <span class="text-gray-500 text-sm">${featured.fecha}</span>
-                    <span class="badge">${featured.readingTime} min</span>
-                    ${featured.tags.map(t => `<span class="badge">${t}</span>`).join('')}
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 group-hover:text-gold transition-colors">${featured.titulo}</h2>
-                <p class="text-gray-400 text-lg leading-relaxed max-w-3xl">${featured.descripcion}</p>
-            </a>
-        `;
-
-        // Current category
-        let currentCategory = 'all';
-
-        // Render articles
-        function renderArticles(articlesToRender, skipFirst = true) {
-            const listContainer = document.getElementById('articles-list');
-            const noResults = document.getElementById('noResults');
-            const showingCount = document.getElementById('showingCount');
-            const data = skipFirst ? articlesToRender.slice(1) : articlesToRender;
-
-            if (data.length === 0) {
-                listContainer.innerHTML = '';
-                noResults.classList.remove('hidden');
-                showingCount.textContent = '0 artículos';
-                return;
+            try {
+                // Intentar cargar desde JSON (funciona en Netlify)
+                const response = await fetch('/data/articulos.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    articles = data;
+                } else {
+                    throw new Error('No se pudo cargar el JSON');
+                }
+            } catch (e) {
+                // Usar fallback local
+                console.log('Usando datos locales:', e.message);
+                articles = fallbackArticles;
             }
 
-            noResults.classList.add('hidden');
-            showingCount.textContent = `Mostrando ${data.length} artículos`;
+            renderArticles(articles);
+        }
 
-            listContainer.innerHTML = data.map((article, i) => `
-                <a href="${article.url_html}" class="article-list-item flex flex-col md:flex-row gap-6 block" style="animation-delay: ${i * 0.05}s">
-                    <div class="md:w-1/3">
-                        <div class="video-thumbnail aspect-video">
-                            <img src="https://img.youtube.com/vi/${article.video_id}/mqdefault.jpg" alt="${article.titulo}" class="w-full h-full object-cover" onerror="this.src='${article.image_url}'" loading="lazy">
-                            <div class="="width: play-icon" style44px; height: 44px; font-size: 16px;"><i class="fas fa-play ml-0.5"></i></div>
-                        </div>
+        function renderArticles(articles) {
+            // Buscar artículo destacado o usar el primero
+            const featured = articles.find(a => a.destacado) || articles[0];
+            const others = articles.filter(a => a !== featured);
+
+            // Renderizar featured
+            document.getElementById('featured').innerHTML = `
+                <a href="articles/${featured.slug}/index.html" class="card block group">
+                    <div class="relative">
+                        <img src="https://img.youtube.com/vi/${featured.video_id}/maxresdefault.jpg" alt="${featured.titulo}" class="card-img" onerror="this.src='https://img.youtube.com/vi/${featured.video_id}/hqdefault.jpg'">
+                        <div class="play-icon"><i class="fas fa-play ml-1"></i></div>
                     </div>
-                    <div class="md:w-2/3">
-                        <div class="flex items-center gap-3 mb-3 flex-wrap">
-                            <span class="text-gray-600 text-xs">${article.fecha}</span>
-                            <span class="badge" style="font-size: 0.6rem;">${article.readingTime} min</span>
-                            ${article.tags.slice(0, 2).map(t => `<span class="badge" style="font-size: 0.6rem;">${t}</span>`).join('')}
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="badge bg-gray-800 text-gray-400">${featured.categoria}</span>
+                            <span class="text-gold text-sm font-medium">${featured.fecha}</span>
+                            <span class="text-gray-600 text-xs">${featured.time} min</span>
                         </div>
-                        <h3 class="font-bold text-white text-lg md:text-xl mb-2 group-hover:text-gold transition-colors">${article.titulo}</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-2">${article.descripcion}</p>
+                        <h2 class="text-2xl font-bold text-white group-hover:text-gold transition-colors">${featured.titulo}</h2>
+                        <p class="text-gray-400 mt-2">${featured.descripcion}</p>
+                    </div>
+                </a>
+            `;
+
+            // Renderizar grilla
+            document.getElementById('articles-grid').innerHTML = others.map(article => `
+                <a href="articles/${article.slug}/index.html" class="card block group">
+                    <div class="relative">
+                        <img src="https://img.youtube.com/vi/${article.video_id}/hqdefault.jpg" alt="${article.titulo}" class="card-img">
+                        <div class="play-icon" style="width:40px;height:40px;font-size:14px"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="badge bg-gray-800 text-gray-500">${article.categoria}</span>
+                            <span class="text-gray-500 text-xs">${article.fecha}</span>
+                        </div>
+                        <h3 class="font-bold text-white group-hover:text-gold transition-colors">${article.titulo}</h3>
+                        <p class="text-gray-500 text-sm mt-1">${article.descripcion}</p>
                     </div>
                 </a>
             `).join('');
         }
 
-        // Initial render
-        renderArticles(articles);
-
-        // Category filter
-        document.querySelectorAll('.badge[data-category]').forEach(badge => {
-            badge.addEventListener('click', () => {
-                document.querySelectorAll('.badge[data-category]').forEach(b => b.classList.remove('active'));
-                badge.classList.add('active');
-                currentCategory = badge.dataset.category;
-
-                if (currentCategory === 'all') {
-                    renderArticles(articles);
-                } else {
-                    const filtered = articles.filter(a => a.category === currentCategory);
-                    renderArticles(filtered);
-                }
-            });
-        });
-
-        // Search
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            const filtered = articles.filter(a =>
-                a.titulo.toLowerCase().includes(query) ||
-                a.descripcion.toLowerCase().includes(query) ||
-                a.tags.some(t => t.toLowerCase().includes(query))
-            );
-            renderArticles(filtered, false);
-        });
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.target.tagName === 'INPUT') return;
-
-            if (e.key === '/') {
-                e.preventDefault();
-                searchInput.focus();
-            } else if (e.key === 'j') {
-                window.scrollBy({ top: 300, behavior: 'smooth' });
-            } else if (e.key === 'k') {
-                window.scrollBy({ top: -300, behavior: 'smooth' });
-            }
-        });
-
-        // Newsletter
-        function handleNewsletter(e) {
-            e.preventDefault();
-            const msg = document.getElementById('newsletterMsg');
-            msg.textContent = '¡Gracias! Te avisaremos cuando haya nuevo contenido.';
-            msg.style.color = '#d4af37';
-            e.target.reset();
-        }
+        // Iniciar
+        loadArticles();
     </script>
 </body>
 </html>
