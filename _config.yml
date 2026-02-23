@@ -1,0 +1,14 @@
+title: "Terapia Liberal"
+description: "Análisis independiente sobre economía, geopolítica y filosofía liberal"
+url: "https://terapialiberal.netlify.app"
+baseurl: ""
+
+markdown: kramdown
+permalink: pretty
+
+collections:
+  articles:
+    output: true
+    permalink: /articles/:slug/
+
+future: true

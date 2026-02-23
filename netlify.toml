@@ -1,0 +1,12 @@
+# Netlify Configuration for Decap CMS
+# This file tells Netlify how to process the site
+
+[build]
+  command = "echo 'No build needed for static site'"
+  publish = "."
+
+# Redirect for clean URLs
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

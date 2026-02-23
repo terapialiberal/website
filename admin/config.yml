@@ -1,0 +1,21 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "articles"
+    label: "Artículos"
+    folder: "articles"
+    create: true
+    slug: "{{slug}}/index"
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Fecha de Publicación", name: "date", widget: "datetime"}
+      - {label: "Descripción breve", name: "description", widget: "text"}
+      - {label: "Categoría", name: "category", widget: "select", options: [{label: "Geopolítica", value: "geopolitica"}, {label: "Economía", value: "economia"}, {label: "Élites", value: "elites"}, {label: "Tecnología", value: "tecnologia"}, {label: "Tecnocracia", value: "tecnocracia"}]}
+      - {label: "Tags (separados por coma)", name: "tags", widget: "string", required: false}
+      - {label: "Video de YouTube (ID)", name: "video_id", widget: "string", required: false, hint: "Ej: ABC123 de youtube.com/watch?v=ABC123"}
+      - {label: "Contenido", name: "body", widget: "markdown"}
