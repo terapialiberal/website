@@ -48,9 +48,10 @@
         <!-- Newsletter -->
         <div class="bg-gray-900 rounded-lg p-6 mb-12 text-center border border-gray-800">
             <p class="text-gray-300 mb-3"><strong>📬 Suscribite</strong> para recibir nuevos análisis cada semana</p>
-            <form class="flex gap-2 max-w-sm mx-auto" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
-                <input type="email" placeholder="tu@email.com" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded text-white text-sm" required>
-                <button class="px-4 py-2 rounded text-sm font-semibold text-white" style="background: linear-gradient(135deg, var(--gold), var(--red));">Suscribirse</button>
+            <form name="newsletter" method="POST" data-netlify="true" class="flex gap-2 max-w-sm mx-auto" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
+                <input type="hidden" name="form-name" value="newsletter">
+                <input type="email" name="email" placeholder="tu@email.com" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded text-white text-sm" required>
+                <button type="submit" class="px-4 py-2 rounded text-sm font-semibold text-white" style="background: linear-gradient(135deg, var(--gold), var(--red));">Suscribirse</button>
             </form>
         </div>
 
