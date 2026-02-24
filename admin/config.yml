@@ -43,14 +43,14 @@ collections:
   - name: "settings"
     label: "Configuración"
     delete: false
-    extension: "yml"
-    format: "yml"
-    create: true
-    filename: "site-settings"
-    fields:
-      - {label: "Título del Sitio", name: "site_title", widget: "string", default: "Terapia Liberal"}
-      - {label: "Descripción", name: "site_description", widget: "text", default: "Análisis independiente sobre economía, geopolítica y filosofía liberal"}
-      - {label: "YouTube URL", name: "youtube_url", widget: "string", default: "https://www.youtube.com/@terapialiberal"}
-      - {label: "Twitter/X URL", name: "twitter_url", widget: "string", default: "https://x.com/terapia_liberal"}
-      - {label: "Patreon URL", name: "patreon_url", widget: "string", default: "https://www.patreon.com/terapialiberal"}
-      - {label: "Email para Newsletter", name: "newsletter_email", widget: "string", hint: "Email donde recibirás las suscripciones"}
+    files:
+      - name: "site-settings"
+        label: "Configuración del Sitio"
+        file: "admin/site-settings.yml"
+        fields:
+          - {label: "Título del Sitio", name: "site_title", widget: "string", default: "Terapia Liberal"}
+          - {label: "Descripción", name: "site_description", widget: "text", default: "Análisis independiente sobre economía, geopolítica y filosofía liberal"}
+          - {label: "YouTube URL", name: "youtube_url", widget: "string", default: "https://www.youtube.com/@terapialiberal"}
+          - {label: "Twitter/X URL", name: "twitter_url", widget: "string", default: "https://x.com/terapia_liberal"}
+          - {label: "Patreon URL", name: "patreon_url", widget: "string", default: "https://www.patreon.com/terapialiberal"}
+          - {label: "Email para Newsletter", name: "newsletter_email", widget: "string", hint: "Email donde recibirás las suscripciones"}
