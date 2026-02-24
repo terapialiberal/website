@@ -3,151 +3,693 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terapia Liberal | Análisis</title>
+    <title>Terapia Liberal | Análisis Independiente</title>
+    <meta name="description" content="Biblioteca de investigaciones. Análisis independientes sobre economía, geopolítica y filosofía liberal.">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <script>
-        tailwind.config = { theme: { extend: { colors: { gold: '#d4af37', red: '#dc2626' } } } }
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { gold: '#d4af37', red: '#dc2626' }
+                }
+            }
+        }
     </script>
+
     <style>
         :root { --gold: #d4af37; --red: #dc2626; }
-        body { font-family: 'Merriweather', serif; background: #0a0a0a; color: #f5f5f5; }
-        h1, h2, h3, h4, h5, h6, .badge { font-family: 'Inter', sans-serif; }
-        .card { background: #111; border: 1px solid #222; border-radius: 16px; overflow: hidden; transition: all 0.3s; }
-        .card:hover { border-color: var(--gold); transform: translateY(-4px); }
-        .card-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
-        .play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--gold); color: #000; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .post-title { transition: color 0.2s; }
-        .post-title:hover { color: var(--gold); }
+
+        /* Modo Oscuro */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Modo Claro */
+        body.light {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #1a1a1a;
+        }
+
+        .gold-text { color: var(--gold); }
+        body.light .gold-text { color: #b8962e; }
+
+        .section-bg {
+            background: rgba(31, 41, 55, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(75, 85, 99, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, border 0.3s;
+        }
+
+        body.light .section-bg {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        body.light .text-gray-300,
+        body.light .text-gray-400 { color: #4b5563; }
+
+        /* Video thumbnail */
+        .video-thumbnail {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            transition: transform 0.3s;
+            cursor: pointer;
+            padding-bottom: 56.25%;
+        }
+
+        .video-thumbnail img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        .video-thumbnail:hover { transform: scale(1.05); }
+
+        .play-button {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--gold);
+            border-radius: 50%;
+            padding: 20px;
+            font-size: 28px;
+        }
+
+        .date-badge {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
+            color: #000;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4); }
+
+        /* Header */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid rgba(75, 85, 99, 0.4);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            transition: background 0.3s, border 0.3s;
+        }
+
+        body.light header {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-section .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .logo-section .brand-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .social-icons a {
+            color: #9ca3af;
+            font-size: 1.25rem;
+            margin-left: 1rem;
+            transition: color 0.3s;
+        }
+
+        body.light .social-icons a { color: #6b7280; }
+        .social-icons a:hover { color: var(--gold); }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid #9ca3af;
+            color: #9ca3af;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: 1rem;
+            transition: all 0.3s;
+        }
+
+        body.light .theme-toggle { color: #6b7280; border-color: #6b7280; }
+        .theme-toggle:hover { color: var(--gold); border-color: var(--gold); }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 1px solid rgba(75, 85, 99, 0.4);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+            transition: background 0.3s, border 0.3s;
+        }
+
+        body.light footer {
+            background: rgba(255, 255, 255, 0.95);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social a {
+            color: #9ca3af;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        body.light .footer-social a { color: #6b7280; }
+        .footer-social a:hover { color: var(--gold); }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        body.light .footer-links a { color: #6b7280; }
+        .footer-links a:hover { color: var(--gold); }
+
+        /* Back to top */
+        #backToTop {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
+            color: #000;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: none;
+            z-index: 1000;
+        }
+
+        #backToTop.show { display: flex; align-items: center; justify-content: center; }
+
+        /* Sidebar */
+        .sidebar { position: sticky; top: 100px; }
+
+        .newsletter-input {
+            background: rgba(17, 24, 39, 0.8);
+            border: 1px solid rgba(75, 85, 99, 0.4);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 8px;
+            width: 100%;
+            margin-bottom: 12px;
+            transition: all 0.3s;
+        }
+
+        body.light .newsletter-input {
+            background: #f3f4f6;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            color: #1a1a1a;
+        }
+
+        .newsletter-input:focus { outline: none; border-color: var(--gold); }
+
+        /* Archive */
+        .archive-list { max-height: 300px; overflow-y: auto; }
+        .archive-list::-webkit-scrollbar { width: 6px; }
+        .archive-list::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+        .archive-item {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+            display: block;
+        }
+
+        body.light .archive-item { border-color: rgba(0,0,0,0.1); }
+        .archive-item:hover { padding-left: 8px; }
+
+        .archive-date { font-size: 11px; color: var(--gold); display: block; margin-bottom: 2px; }
+        .archive-title { font-size: 13px; color: #d1d5db; }
+        body.light .archive-title { color: #4b5563; }
+        .archive-item:hover .archive-title { color: var(--gold); }
+
+        .archive-toggle {
+            display: none;
+            color: var(--gold);
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        .archive-toggle:hover { text-decoration: underline; }
+
+        /* Tags */
+        .tag-cloud .tag {
+            display: inline-block;
+            background: #374151;
+            color: #d1d5db;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin: 3px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        body.light .tag-cloud .tag { background: #e5e7eb; color: #374151; }
+        .tag-cloud .tag:hover { background: var(--gold); color: #000; }
+
+        /* Filter buttons */
+        .filter-btn {
+            background: #374151;
+            color: #d1d5db;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        body.light .filter-btn { background: #e5e7eb; color: #374151; }
+        .filter-btn:hover, .filter-btn.active { background: var(--gold); color: #000; }
+
+        /* Search */
+        #search-input {
+            background: rgba(17, 24, 39, 0.8);
+            border: 1px solid rgba(75, 85, 99, 0.4);
+            color: #fff;
+        }
+
+        body.light #search-input { background: #f3f4f6; border-color: rgba(0,0,0,0.2); color: #1a1a1a; }
+
+        @media (max-width: 1024px) { .sidebar { position: static; } }
+        @media (max-width: 768px) {
+            header { padding: 1rem; flex-direction: column; gap: 1rem; }
+            .header-content { flex-direction: column; }
+        }
     </style>
 </head>
-<body class="bg-black">
+<body class="dark">
     <!-- Header -->
-    <nav class="border-b border-gray-800 py-4" style="background: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.8) 100%);">
-        <div class="max-w-5xl mx-auto px-6 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-3">
-                <img src="https://yt3.googleusercontent.com/ZzVyDrXt4x8YWoKbISHZzC9CCtkEPCN4GRET1Xxf_wssNyw7mfN-xTbBmpwEJHO0DRQrg0Dgug=s900-c-k-c0x00ffffff-no-rj" class="w-10 h-10 rounded-full">
-                <span class="text-xl font-bold text-white">Terapia Liberal</span>
-            </a>
-            <div class="flex gap-4">
-                <a href="https://www.youtube.com/@terapialiberal" target="_blank" class="text-gray-400 hover:text-gold"><i class="fab fa-youtube"></i></a>
-                <a href="https://x.com/terapia_liberal" target="_blank" class="text-gray-400 hover:text-gold"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="https://www.patreon.com/terapialiberal" target="_blank" class="text-gray-400 hover:text-gold"><i class="fab fa-patreon"></i></a>
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="https://yt3.googleusercontent.com/ZzVyDrXt4x8YWoKbISHZzC9CCtkEPCN4GRET1Xxf_wssNyw7mfN-xTbBmpwEJHO0DRQrg0Dgug=s900-c-k-c0x00ffffff-no-rj" alt="Logo" class="logo">
+                <a href="/" class="brand-title">Terapia Liberal</a>
+            </div>
+            <div class="flex items-center">
+                <nav class="social-icons">
+                    <a href="https://www.youtube.com/@terapialiberal" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/terapia_liberal" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.patreon.com/terapialiberal" target="_blank"><i class="fab fa-patreon"></i></a>
+                </nav>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <main class="max-w-5xl mx-auto px-6 py-10">
+    <!-- Main -->
+    <main class="max-w-7xl mx-auto px-4 py-10">
         <!-- Hero -->
-        <div class="mb-12 text-center">
-            <h1 class="text-3xl font-bold text-white mb-2">Análisis para mentes críticas</h1>
-            <p class="text-gray-500">Investigaciones profundas sobre economía, geopolítica y filosofía liberal</p>
-        </div>
-
-        <!-- Newsletter -->
-        <div class="bg-gray-900 rounded-lg p-6 mb-12 text-center border border-gray-800">
-            <p class="text-gray-300 mb-3"><strong>📬 Suscribite</strong> para recibir nuevos análisis cada semana</p>
-            <form name="newsletter" method="POST" data-netlify="true" class="flex gap-2 max-w-sm mx-auto" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
-                <input type="hidden" name="form-name" value="newsletter">
-                <input type="email" name="email" placeholder="tu@email.com" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded text-white text-sm" required>
-                <button type="submit" class="px-4 py-2 rounded text-sm font-semibold text-white" style="background: linear-gradient(135deg, var(--gold), var(--red));">Suscribirse</button>
-            </form>
-        </div>
-
-        <!-- Featured -->
-        <section class="mb-12" id="featured">
-            <div class="text-center text-gray-500 py-8">Cargando artículos...</div>
+        <section class="section-bg rounded-2xl py-14 px-8 mb-10 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 gold-text">Biblioteca de Investigaciones</h2>
+            <p class="text-gray-300 max-w-3xl mx-auto text-lg">Análisis independientes sobre economía, geopolítica y filosofía liberal. Investigaciones profundas que conectan los eventos globales con las agendas ocultas del poder.</p>
         </section>
 
-        <!-- Grid cards -->
-        <section>
-            <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-6">Últimos artículos</h2>
-            <div class="grid md:grid-cols-3 gap-6" id="articles-grid"></div>
-        </section>
+        <!-- Layout -->
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Contenido Principal -->
+            <div class="lg:w-3/4">
+                <!-- Filtro Tipo -->
+                <div class="flex gap-3 mb-6" id="tipo-filtro">
+                    <button onclick="filterByTipo('all')" class="filter-btn active" data-tipo="all">Todos</button>
+                    <button onclick="filterByTipo('video')" class="filter-btn" data-tipo="video">Videos</button>
+                    <button onclick="filterByTipo('articulo')" class="filter-btn" data-tipo="articulo">Artículos</button>
+                </div>
+
+                <!-- Destacado - MÁS GRANDE -->
+                <section class="mb-10">
+                    <h3 class="text-2xl font-semibold mb-4 gold-text">⭐ Análisis Destacado</h3>
+                    <div id="featured-container" class="section-bg rounded-2xl p-8"></div>
+                </section>
+
+                <!-- Grilla - Todos los artículos -->
+                <section class="mb-10">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-semibold gold-text" id="grilla-titulo">Todos los Análisis</h3>
+                        <span id="article-count" class="text-gray-400 text-sm"></span>
+                    </div>
+                    <div id="grid-container" class="grid md:grid-cols-2 lg:grid-cols-2 gap-6"></div>
+                    <div class="text-center mt-8">
+                        <button id="load-more-btn" class="btn-gradient hidden" onclick="loadMore()">
+                            <i class="fas fa-plus mr-2"></i>Ver más
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="lg:w-1/4">
+                <div class="sidebar space-y-6">
+                    <!-- Newsletter -->
+                    <div class="section-bg rounded-2xl p-6">
+                        <h4 class="text-lg font-bold mb-3 gold-text"><i class="fas fa-envelope mr-2"></i>Newsletter</h4>
+                        <p class="text-gray-400 text-sm mb-4">Recibí análisis nuevos cada semana.</p>
+                        <form name="newsletter" method="POST" data-netlify="true" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
+                            <input type="hidden" name="form-name" value="newsletter">
+                            <input type="email" name="email" placeholder="tu@email.com" class="newsletter-input" required>
+                            <button type="submit" class="btn-gradient w-full">Suscribirse</button>
+                        </form>
+                    </div>
+
+                    <!-- Buscador -->
+                    <div class="section-bg rounded-2xl p-6">
+                        <h4 class="text-lg font-bold mb-3 gold-text"><i class="fas fa-search mr-2"></i>Buscar</h4>
+                        <input type="text" id="search-input" placeholder="Buscar..." class="newsletter-input" oninput="searchArticles(this.value)">
+                    </div>
+
+                    <!-- Nube de Etiquetas -->
+                    <div class="section-bg rounded-2xl p-6">
+                        <h4 class="text-lg font-bold mb-3 gold-text"><i class="fas fa-tags mr-2"></i>Etiquetas</h4>
+                        <div class="tag-cloud" id="tags-cloud"></div>
+                    </div>
+
+                    <!-- Archivo con desplegable -->
+                    <div class="section-bg rounded-2xl p-6">
+                        <h4 class="text-lg font-bold mb-3 gold-text"><i class="fas fa-archive mr-2"></i>Archivo</h4>
+                        <div class="archive-list" id="archive-list"></div>
+                        <span class="archive-toggle" id="archive-toggle" onclick="toggleArchive()">Ver más ▼</span>
+                    </div>
+
+                    <!-- Sobre el Autor - MÁS DETALLADO -->
+                    <div class="section-bg rounded-2xl p-6">
+                        <h4 class="text-lg font-bold mb-3 gold-text"><i class="fas fa-user mr-2"></i>Sobre el Autor</h4>
+                        <div class="text-center mb-4">
+                            <img src="https://i.postimg.cc/8C3ZkxNy/1660176107980.jpg" alt="Nicolás" class="w-24 h-24 rounded-full mx-auto object-cover mb-3">
+                            <h5 class="font-bold text-lg">Nicolás Martínez Lage</h5>
+                            <p class="text-gold text-sm font-medium">Analista Independiente</p>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-3">Creador de Terapia Liberal, plataforma de análisis que conecta eventos económicos y geopolíticos globales con las agendas de poder.</p>
+                        <p class="text-gray-400 text-sm">Especializado en revelar las estructuras y mecanismos del control financiero mundial más allá de la narrativa mainstream.</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
     </main>
 
-    <footer class="border-t border-gray-800 mt-16 py-8 text-center">
-        <p class="text-gray-600 text-sm">© 2026 Terapia Liberal · Análisis independiente</p>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="/"><i class="fas fa-home mr-2"></i>Inicio</a>
+            <a href="https://www.youtube.com/@terapialiberal" target="_blank"><i class="fab fa-youtube mr-2"></i>YouTube</a>
+            <a href="https://x.com/terapia_liberal" target="_blank"><i class="fa-brands fa-x-twitter mr-2"></i>Twitter/X</a>
+            <a href="https://www.patreon.com/terapialiberal" target="_blank"><i class="fab fa-patreon mr-2"></i>Patreon</a>
+            <a href="/admin/"><i class="fas fa-cog mr-2"></i>Admin</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.youtube.com/@terapialiberal" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://x.com/terapia_liberal" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.patreon.com/terapialiberal" target="_blank"><i class="fab fa-patreon"></i></a>
+        </div>
+        <p class="text-gray-500 text-sm">© 2026 Terapia Liberal. Análisis independiente para mentes críticas.</p>
     </footer>
 
+    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+
     <script>
-        // Datos embebidos como fallback (funciona localmente)
-        const fallbackArticles = [
-            { id: "1", slug: "la-teoria-del-rimland-y-el-nuevo-orden-mundial", titulo: "La Teoría del Rimland y el Nuevo Orden Mundial", descripcion: "Análisis sobre la teoría geopolítica de Nicholas Spykman y la arquitectura del poder contemporáneo.", fecha: "07/02/2026", categoria: "Geopolítica", video_id: "9AMPffjQREY", time: 8, destacado: true },
-            { id: "2", slug: "gaza-sa-y-venezuela-inc", titulo: "GAZA S.A. y VENEZUELA INC.: Así Operan los Arquitectos de la WW3", descripcion: "Cómo Jared Kushner, Tony Blair y megainversores transforman conflictos en oportunidades de negocio.", fecha: "08/01/2026", categoria: "Geopolítica", video_id: "9wl8kjn7pV0", time: 12, destacado: false },
-            { id: "3", slug: "jeffrey-nada-es-lo-que-parece", titulo: "Jeffrey: NADA ES LO QUE PARECE - Análisis de la Red Global de Control", descripcion: "Jeffrey Epstein no era un criminal aislado sino el fixer estratégico de una red global.", fecha: "06/12/2025", categoria: "Élites", video_id: "5Kx0Acdv0qw", time: 15, destacado: false },
-            { id: "4", slug: "la-matrix-del-poder", titulo: "La Matrix del Poder: Quiénes Son los Verdaderos Dueños del Planeta", descripcion: "Dominic Cummings reveló que el gobierno británico es 'teatro guionado'. Las 147 corporaciones que controlan el 40% de la riqueza global.", fecha: "13/11/2025", categoria: "Élites", video_id: "wsVwjy3z0KE", time: 10, destacado: false },
-            { id: "5", slug: "el-mundo-se-fractura-recursos", titulo: "El MUNDO se FRACTURA: La Batalla SECRETA por los Recursos Tecnológicos", descripcion: "La guerra económica por minerales críticos y semiconductores que está redibujando el mapa del poder mundial.", fecha: "07/11/2025", categoria: "Economía", video_id: "mQX6Ef5QwMk", time: 9, destacado: false },
-            { id: "6", slug: "cometa-atlas-ritual-elites", titulo: "Cometa 3I/ATLAS: ¿Ritual de Élites o Amenaza Real?", descripcion: "Investigación sobre las conexiones entre el cometa interestelar ATLAS, Peter Thiel y Palantir.", fecha: "29/10/2025", categoria: "Tecnología", video_id: "0KJOpBufUc4", time: 11, destacado: false }
-        ];
+        // Theme toggle
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.querySelector('.theme-toggle i');
 
-        async function loadArticles() {
-            let articles = [];
-
-            try {
-                // Intentar cargar desde JSON (funciona en Netlify)
-                const response = await fetch('/data/articulos.json');
-                if (response.ok) {
-                    const data = await response.json();
-                    articles = data;
-                } else {
-                    throw new Error('No se pudo cargar el JSON');
-                }
-            } catch (e) {
-                // Usar fallback local
-                console.log('Usando datos locales:', e.message);
-                articles = fallbackArticles;
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
             }
-
-            renderArticles(articles);
         }
 
-        function renderArticles(articles) {
-            // Buscar artículo destacado o usar el primero
-            const featured = articles.find(a => a.destacado) || articles[0];
-            const others = articles.filter(a => a !== featured);
+        // Cargar tema guardado
+        (function() {
+            const saved = localStorage.getItem('theme');
+            if (saved === 'light') {
+                document.body.classList.add('light');
+                document.body.classList.remove('dark');
+                document.querySelector('.theme-toggle i').classList.remove('fa-moon');
+                document.querySelector('.theme-toggle i').classList.add('fa-sun');
+            }
+        })();
 
-            // Renderizar featured
-            document.getElementById('featured').innerHTML = `
-                <a href="articles/${featured.slug}/index.html" class="card block group">
-                    <div class="relative">
-                        <img src="https://img.youtube.com/vi/${featured.video_id}/maxresdefault.jpg" alt="${featured.titulo}" class="card-img" onerror="this.src='https://img.youtube.com/vi/${featured.video_id}/hqdefault.jpg'">
-                        <div class="play-icon"><i class="fas fa-play ml-1"></i></div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="badge bg-gray-800 text-gray-400">${featured.categoria}</span>
-                            <span class="text-gold text-sm font-medium">${featured.fecha}</span>
-                            <span class="text-gray-600 text-xs">${featured.time} min</span>
-                        </div>
-                        <h2 class="text-2xl font-bold text-white group-hover:text-gold transition-colors">${featured.titulo}</h2>
-                        <p class="text-gray-400 mt-2">${featured.descripcion}</p>
-                    </div>
-                </a>
-            `;
+        // Variables globales
+        let allArticles = [];
+        let filteredArticles = [];
+        let displayedCount = 100; // Más artículos visibles
+        const PER_PAGE = 50;
 
-            // Renderizar grilla
-            document.getElementById('articles-grid').innerHTML = others.map(article => `
-                <a href="articles/${article.slug}/index.html" class="card block group">
-                    <div class="relative">
-                        <img src="https://img.youtube.com/vi/${article.video_id}/hqdefault.jpg" alt="${article.titulo}" class="card-img">
-                        <div class="play-icon" style="width:40px;height:40px;font-size:14px"><i class="fas fa-play"></i></div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="badge bg-gray-800 text-gray-500">${article.categoria}</span>
-                            <span class="text-gray-500 text-xs">${article.fecha}</span>
+        // Back to top
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').classList.toggle('show', window.pageYOffset > 300);
+        });
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            const fallback = [
+                { title: "La Teoría del Rimland", description: "Análisis geopolítico.", url: "articles/terapia-liberal-rimland-nuevo-orden-mundial.html", fecha: "07/02/2026", video_id: "9AMPffjQREY", tipo: "video", tags: ["geopolítica", "eeuu"] },
+                { title: "GAZA S.A.", description: "Los arquitectos de la WW3.", url: "articles/gaza-venezuela-arquitectos-ww3.html", fecha: "08/01/2026", video_id: "9wl8kjn7pV0", tipo: "video", tags: ["geopolítica", "medio oriente"] },
+                { title: "Jeffrey Epstein", description: "La red global de control.", url: "articles/jeffrey.html", fecha: "06/12/2025", video_id: "5Kx0Acdv0qw", tipo: "video", tags: ["élites", "wall street"] }
+            ];
+
+            fetch('data/articles.json')
+                .then(r => r.json())
+                .then(data => init(data))
+                .catch(() => init(fallback));
+        });
+
+        function init(data) {
+            // Ordenar por fecha
+            allArticles = [...data].sort((a, b) => {
+                const da = new Date(a.fecha?.split('/').reverse().join('-') || '2025-01-01');
+                const db = new Date(b.fecha?.split('/').reverse().join('-') || '2025-01-01');
+                return db - da;
+            });
+
+            filteredArticles = [...allArticles];
+            renderAll();
+        }
+
+        function renderAll() {
+            renderFeatured();
+            renderGrid();
+            renderArchive();
+            renderTags();
+            updateCount();
+        }
+
+        function renderFeatured() {
+            const container = document.getElementById('featured-container');
+            if (filteredArticles.length === 0) { container.innerHTML = ''; return; }
+
+            const a = filteredArticles[0];
+            const img = a.image || (a.video_id ? `https://img.youtube.com/vi/${a.video_id}/maxresdefault.jpg` : '');
+            const playBtn = a.video_id ? `<div class="play-button"><i class="fas fa-play"></i></div>` : '';
+            const videoLink = a.video_id ? `<a href="https://youtu.be/${a.video_id}" target="_blank" class="btn-gradient">Ver Video</a>` : '';
+
+            container.innerHTML = `
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/2">
+                        <div class="video-thumbnail" style="height:320px;padding:0" onclick="${a.video_id ? `window.open('https://youtu.be/${a.video_id}','_blank')` : ''}">
+                            <img src="${img}" alt="${a.title}" onerror="this.src='https://img.youtube.com/vi/${a.video_id}/hqdefault.jpg'">
+                            ${playBtn}
                         </div>
-                        <h3 class="font-bold text-white group-hover:text-gold transition-colors">${article.titulo}</h3>
-                        <p class="text-gray-500 text-sm mt-1">${article.descripcion}</p>
                     </div>
+                    <div class="md:w-1/2 flex flex-col justify-center">
+                        <span class="date-badge mb-4">${a.fecha}</span>
+                        <h4 class="text-2xl md:text-3xl font-bold mb-4 gold-text">${a.title}</h4>
+                        <p class="text-gray-300 text-lg mb-6">${a.description}</p>
+                        <div class="flex gap-4">
+                            <a href="${a.url}" class="btn-gradient">Leer Análisis</a>
+                            ${videoLink}
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        function renderGrid() {
+            const container = document.getElementById('grid-container');
+            const articles = filteredArticles.slice(1, displayedCount + 1);
+
+            if (articles.length === 0) { container.innerHTML = '<p class="text-gray-400">No hay artículos</p>'; return; }
+
+            container.innerHTML = articles.map(a => {
+                const img = a.image || (a.video_id ? `https://img.youtube.com/vi/${a.video_id}/hqdefault.jpg` : '');
+                const playBtn = a.video_id ? `<div class="play-button" style="padding:12px;font-size:18px"><i class="fas fa-play"></i></div>` : '';
+                const videoLink = a.video_id ? `<a href="https://youtu.be/${a.video_id}" target="_blank" class="text-gold text-sm">Ver Video</a>` : '';
+
+                return `
+                <div class="section-bg rounded-xl p-5">
+                    <div class="video-thumbnail mb-4" style="height:160px;padding:0" onclick="${a.video_id ? `window.open('https://youtu.be/${a.video_id}','_blank')` : ''}">
+                        <img src="${img}" alt="${a.title}" onerror="this.src='https://img.youtube.com/vi/${a.video_id}/hqdefault.jpg'">
+                        ${playBtn}
+                    </div>
+                    <span class="date-badge text-xs">${a.fecha}</span>
+                    <h4 class="font-bold mt-2 mb-2 gold-text text-lg">${a.title}</h4>
+                    <p class="text-gray-400 text-sm mb-4 line-clamp-2">${a.description}</p>
+                    <div class="flex gap-3">
+                        <a href="${a.url}" class="btn-gradient text-sm py-2 px-4">Leer</a>
+                        ${videoLink}
+                    </div>
+                </div>`;
+            }).join('');
+
+            // Botón cargar más
+            const btn = document.getElementById('load-more-btn');
+            btn.classList.toggle('hidden', displayedCount >= filteredArticles.length);
+        }
+
+        // Archive con desplegable
+        let archiveExpanded = false;
+        function toggleArchive() {
+            archiveExpanded = !archiveExpanded;
+            const list = document.getElementById('archive-list');
+            const toggle = document.getElementById('archive-toggle');
+
+            if (archiveExpanded) {
+                list.style.maxHeight = 'none';
+                toggle.textContent = 'Ver menos ▲';
+            } else {
+                list.style.maxHeight = '300px';
+                toggle.textContent = 'Ver más ▼';
+            }
+        }
+
+        function renderArchive() {
+            const container = document.getElementById('archive-list');
+            container.innerHTML = allArticles.slice(0, 20).map(a => `
+                <a href="${a.url}" class="archive-item">
+                    <span class="archive-date">${a.fecha}</span>
+                    <span class="archive-title">${a.title}</span>
                 </a>
             `).join('');
+
+            // Ocultar toggle si hay pocos
+            const toggle = document.getElementById('archive-toggle');
+            toggle.style.display = allArticles.length > 20 ? 'block' : 'none';
         }
 
-        // Iniciar
-        loadArticles();
+        function renderTags() {
+            const tags = [...new Set(allArticles.flatMap(a => a.tags || []))];
+            const container = document.getElementById('tags-cloud');
+            container.innerHTML = tags.map(tag =>
+                `<span class="tag" onclick="searchArticles('${tag}')">${tag}</span>`
+            ).join('');
+        }
+
+        function updateCount() {
+            document.getElementById('article-count').textContent = `${filteredArticles.length} artículos`;
+            document.getElementById('grilla-titulo').textContent =
+                currentTipo === 'all' ? 'Todos los Análisis' :
+                currentTipo === 'video' ? 'Videos' : 'Artículos';
+        }
+
+        // Filtros
+        let currentTipo = 'all';
+
+        function filterByTipo(tipo) {
+            currentTipo = tipo;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.tipo === tipo);
+            });
+            applyFilters();
+        }
+
+        function searchArticles(query) {
+            document.getElementById('search-input').value = query;
+            applyFilters(query.toLowerCase());
+        }
+
+        function applyFilters(search = null) {
+            filteredArticles = allArticles.filter(a => {
+                const matchesTipo = currentTipo === 'all' || a.tipo === currentTipo;
+                const matchesSearch = !search ||
+                    a.title?.toLowerCase().includes(search) ||
+                    a.description?.toLowerCase().includes(search) ||
+                    a.tags?.some(t => t.toLowerCase().includes(search));
+                return matchesTipo && matchesSearch;
+            });
+
+            displayedCount = 100;
+            renderGrid();
+            updateCount();
+        }
+
+        function loadMore() {
+            displayedCount += PER_PAGE;
+            renderGrid();
+        }
     </script>
 </body>
 </html>

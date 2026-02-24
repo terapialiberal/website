@@ -2,133 +2,199 @@
   {
     "title": "La Teoría del Rimland y el Nuevo Orden Mundial",
     "description": "Análisis sobre la teoría geopolítica de Nicholas Spykman, el Rimland y la arquitectura del poder contemporáneo.",
-    "url": "/articles/terapia-liberal-rimland-nuevo-orden-mundial/",
+    "url": "articles/terapia-liberal-rimland-nuevo-orden-mundial.html",
     "fecha": "07/02/2026",
-    "image": "https://img.youtube.com/vi/9AMPffjQREY/maxresdefault.jpg",
     "video_id": "9AMPffjQREY",
-    "category": "geopolitica",
-    "tags": "Geopolítica, EE.UU., Eurasia",
-    "reading_time": 8
+    "tipo": "video",
+    "tags": ["geopolítica", "eeuu", "eurasia", "spykman"]
   },
   {
     "title": "GAZA S.A. y VENEZUELA INC.: Así Operan los Arquitectos de la WW3",
     "description": "Investigación sobre cómo Jared Kushner, Tony Blair y megainversores globales transforman conflictos en oportunidades de negocio.",
-    "url": "/articles/gaza-venezuela-arquitectos-ww3/",
+    "url": "articles/gaza-venezuela-arquitectos-ww3.html",
     "fecha": "08/01/2026",
-    "image": "https://img.youtube.com/vi/9wl8kjn7pV0/maxresdefault.jpg",
     "video_id": "9wl8kjn7pV0",
-    "category": "geopolitica",
-    "tags": "Geopolítica, Medio Oriente",
-    "reading_time": 12
+    "tipo": "video",
+    "tags": ["geopolítica", "medio oriente", "kushner", "ucrania"]
   },
   {
     "title": "Jeffrey: NADA ES LO QUE PARECE - Análisis de la Red Global de Control",
     "description": "Jeffrey Epstein no era un criminal aislado sino el fixer estratégico de una red global.",
-    "url": "/articles/jeffrey/",
+    "url": "articles/jeffrey.html",
     "fecha": "06/12/2025",
-    "image": "https://img.youtube.com/vi/5Kx0Acdv0qw/maxresdefault.jpg",
     "video_id": "5Kx0Acdv0qw",
-    "category": "elites",
-    "tags": "Élites, Wall Street",
-    "reading_time": 15
+    "tipo": "video",
+    "tags": ["élites", "wall street", "epstein", "inteligencia"]
   },
   {
     "title": "La Matrix del Poder: Quiénes Son los Verdaderos Dueños del Planeta",
-    "description": "Dominic Cummings reveló que el gobierno británico es 'teatro guionado'.",
-    "url": "/articles/la-matrix-del-poder/",
+    "description": "Dominic Cummings reveló que el gobierno británico es 'teatro guionado'. Las 147 corporaciones que controlan el 40% de la riqueza global.",
+    "url": "articles/la-matrix-del-poder.html",
     "fecha": "13/11/2025",
-    "image": "https://img.youtube.com/vi/wsVwjy3z0KE/maxresdefault.jpg",
     "video_id": "wsVwjy3z0KE",
-    "category": "elites",
-    "tags": "Élites, Oligarquía",
-    "reading_time": 10
+    "tipo": "video",
+    "tags": ["élites", "oligarquía", "reino unido", "rothschild"]
   },
   {
     "title": "El MUNDO se FRACTURA: La Batalla por los Recursos Tecnológicos",
-    "description": "La guerra económica por minerales críticos y semiconductores que redibuja el mapa del poder.",
-    "url": "/articles/el-mundo-se-fractura-recursos-tecnologicos/",
+    "description": "La guerra económica por minerales críticos y semiconductores que redibuja el mapa del poder mundial.",
+    "url": "articles/el-mundo-se-fractura-recursos-tecnologicos.html",
     "fecha": "07/11/2025",
-    "image": "https://img.youtube.com/vi/mQX6Ef5QwMk/maxresdefault.jpg",
     "video_id": "mQX6Ef5QwMk",
-    "category": "economia",
-    "tags": "Economía, Tecnología, China",
-    "reading_time": 9
+    "tipo": "video",
+    "tags": ["economía", "china", "tecnología", "semicondutores"]
   },
   {
     "title": "Cometa 3I/ATLAS: ¿Ritual de Élites o Amenaza Real?",
     "description": "Investigación sobre las conexiones entre el cometa ATLAS, Peter Thiel y Palantir.",
-    "url": "/articles/cometa_atlas_ritual_elites_analisis/",
+    "url": "articles/cometa_atlas_ritual_elites_analisis.html",
     "fecha": "29/10/2025",
-    "image": "https://img.youtube.com/vi/0KJOpBufUc4/maxresdefault.jpg",
     "video_id": "0KJOpBufUc4",
-    "category": "tecnologia",
-    "tags": "Tecnología, Espacio",
-    "reading_time": 11
+    "tipo": "video",
+    "tags": ["tecnología", "espacio", "thiel", "palantir"]
   },
   {
     "title": "El Gran Reseteo de la Deuda Mundial",
     "description": "Análisis de la crisis de deuda global y el Great Reset.",
-    "url": "/articles/analisis_great_reset_deuda_mundial/",
+    "url": "articles/analisis_great_reset_deuda_mundial.html",
     "fecha": "24/10/2025",
-    "image": "https://img.youtube.com/vi/a9gcaF--yfk/maxresdefault.jpg",
     "video_id": "a9gcaF--yfk",
-    "category": "economia",
-    "tags": "Economía, Deuda",
-    "reading_time": 8
+    "tipo": "video",
+    "tags": ["economía", "deuda", "great reset", "wto"]
+  },
+  {
+    "title": "El Asesinato de Charlie Kirk",
+    "description": "Análisis profundo del asesinato de Charlie Kirk y el fracturamiento del discurso político estadounidense.",
+    "url": "articles/analisis_charlie_kirk_2025.html",
+    "fecha": "24/10/2025",
+    "video_id": "GMTSm7ycs8E",
+    "tipo": "video",
+    "tags": ["política", "eeuu", "media", "psicología"]
   },
   {
     "title": "La Lucha por la Supremacía de la IA",
     "description": "Cómo la carrera por la inteligencia artificial redefine el poder global.",
-    "url": "/articles/analisis_supremacia_ia_geopolitica/",
+    "url": "articles/analisis_supremacia_ia_geopolitica.html",
     "fecha": "15/10/2025",
-    "image": "https://img.youtube.com/vi/-n6Ms6E2tGg/maxresdefault.jpg",
     "video_id": "-n6Ms6E2tGg",
-    "category": "tecnologia",
-    "tags": "Tecnología, IA",
-    "reading_time": 10
+    "tipo": "video",
+    "tags": ["tecnología", "ia", "china", "jpmorgan"]
   },
   {
     "title": "Caos Programado: El Camino hacia una Crisis Total",
     "description": "Análisis del plan tecnocrático detrás del caos aparente en Estados Unidos.",
-    "url": "/articles/caos-programado-crisis-total/",
+    "url": "articles/caos-programado-crisis-total.html",
     "fecha": "10/10/2025",
-    "image": "https://img.youtube.com/vi/ZeZN8skPVZg/maxresdefault.jpg",
     "video_id": "ZeZN8skPVZg",
-    "category": "tecnocracia",
-    "tags": "Tecnocracia, EE.UU.",
-    "reading_time": 9
+    "tipo": "video",
+    "tags": ["tecnocracia", "eeuu", "thiel", "gladio"]
   },
   {
     "title": "El Avance de la Tecnocracia Digital",
     "description": "El sistema de identificación digital obligatorio y la vigilancia global.",
-    "url": "/articles/analisis_tecnocracia_digital/",
+    "url": "articles/analisis_tecnocracia_digital.html",
     "fecha": "08/10/2025",
-    "image": "https://img.youtube.com/vi/LqkHZWvALJ8/maxresdefault.jpg",
     "video_id": "LqkHZWvALJ8",
-    "category": "tecnocracia",
-    "tags": "Tecnocracia, Vigilancia",
-    "reading_time": 8
+    "tipo": "video",
+    "tags": ["tecnocracia", "vigilancia", "id digital", "starmer"]
   },
   {
     "title": "Wall Street Advierte: 'Primero un Gran Repunte, Luego un Crash'",
     "description": "Las advertencias y el paralelismo histórico con 1929.",
-    "url": "/articles/wall-street-repunte-crash-analisis/",
+    "url": "articles/wall-street-repunte-crash-analisis.html",
     "fecha": "03/10/2025",
-    "image": "https://img.youtube.com/vi/k40I-u2gi50/maxresdefault.jpg",
     "video_id": "k40I-u2gi50",
-    "category": "economia",
-    "tags": "Economía, Wall Street",
-    "reading_time": 7
+    "tipo": "video",
+    "tags": ["economía", "wall street", "crash", "1929"]
   },
   {
     "title": "La División del Mundo en Bloques",
     "description": "La división del mundo en bloques económicos y la reestructuración de la gobernanza mundial.",
-    "url": "/articles/divideyconquista/",
+    "url": "articles/divideyconquista.html",
     "fecha": "01/10/2025",
-    "image": "https://img.youtube.com/vi/3nfqpb2RLNU/maxresdefault.jpg",
     "video_id": "3nfqpb2RLNU",
-    "category": "geopolitica",
-    "tags": "Geopolítica, Bloques",
-    "reading_time": 11
+    "tipo": "video",
+    "tags": ["geopolítica", "bloques", "china", "trump"]
+  },
+  {
+    "title": "El Cuarto Giro: Ciclos Históricos y Crisis Institucional",
+    "description": "Análisis de la teoría del Cuarto Giro de Strauss-Howe aplicada al contexto actual.",
+    "url": "articles/cuarto-giro.html",
+    "fecha": "31/08/2025",
+    "video_id": "Bx6zBh7gunI",
+    "tipo": "video",
+    "tags": ["historia", "ciclos", "crisis", "institucional"]
+  },
+  {
+    "title": "Trump Activa Poderes de Emergencia: COG y Proyecto 2025",
+    "description": "Análisis sobre la activación de poderes presidenciales extraordinarios y la militarización de Washington DC.",
+    "url": "articles/trump-poderes-emergencia-cog-proyecto-2025.html",
+    "fecha": "20/08/2025",
+    "video_id": "hjuWL_z9Vh0",
+    "tipo": "video",
+    "tags": ["política", "trump", "cog", "washington"]
+  },
+  {
+    "title": "El Gran Tablero Mundial: La Profecía de Brzezinski",
+    "description": "Análisis definitivo de la visión geopolítica de Zbigniew Brzezinski y su impacto en el orden mundial.",
+    "url": "articles/zbig.html",
+    "fecha": "18/08/2025",
+    "video_id": "QTDXeE8bey0",
+    "tipo": "video",
+    "tags": ["geopolítica", "brzezinski", "europa", "eurasia"]
+  },
+  {
+    "title": "LOS DUEÑOS DE MAGA y el FUTURO",
+    "description": "Investigación sobre los dueños de MAGA y las proyecciones futuras.",
+    "url": "articles/dueños-maga.html",
+    "fecha": "07/08/2025",
+    "video_id": "-wntkT1oDS4",
+    "tipo": "video",
+    "tags": ["política", "maga", "trump", "elecciones"]
+  },
+  {
+    "title": "TRUMP ES el Caballo de Troya Tecnocrático",
+    "description": "La batalla por el control ha comenzado. La verdadera naturaleza del movimiento Trump.",
+    "url": "articles/trump-cbdc.html",
+    "fecha": "24/07/2025",
+    "video_id": "UEgEIzZ9dYo",
+    "tipo": "video",
+    "tags": ["economía", "cbdc", "trump", "tecnocracia"]
+  },
+  {
+    "title": "El Gran Tablero Geopolítico - Brzezinski marca el Rumbo",
+    "description": "La estrategia geopolítica de Zbigniew Brzezinski y su influencia en el orden mundial actual.",
+    "url": "articles/el-gran-tablero.html",
+    "fecha": "05/07/2025",
+    "video_id": "QTDXeE8bey0",
+    "tipo": "video",
+    "tags": ["geopolítica", "brzezinski", "china", "rusia"]
+  },
+  {
+    "title": "Los Ganadores del Nuevo Complejo Militar TECNOLÓGICO",
+    "description": "El entramado entre Silicon Valley, Wall Street y el complejo militar global.",
+    "url": "articles/nuevo-complejo-militar.html",
+    "fecha": "29/06/2025",
+    "video_id": "k3mX98Xo_qc",
+    "tipo": "video",
+    "tags": ["militar", "tecnología", "blackrock", "palantir"]
+  },
+  {
+    "title": "El Segundo Borrador del Orden Mundial",
+    "description": "Rediseño del orden financiero global, geopolítica, CBDC y nueva arquitectura del poder.",
+    "url": "articles/seunda-globalizacion.html",
+    "fecha": "25/06/2025",
+    "video_id": "zYV-hGwE-RQ",
+    "tipo": "video",
+    "tags": ["geopolítica", "orden mundial", "cbdc", "medio oriente"]
+  },
+  {
+    "title": "Epstein Inmersivo: La Red Global de Control",
+    "description": "Análisis profundo de la red de control global vinculada a Jeffrey Epstein.",
+    "url": "articles/epsteininmersivo.html",
+    "fecha": "15/06/2025",
+    "video_id": "5Kx0Acdv0qw",
+    "tipo": "video",
+    "tags": ["élites", "epstein", "maxwell", "vigilancia"]
   }
 ]

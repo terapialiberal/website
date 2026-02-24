@@ -7,62 +7,50 @@ publish_mode: "editorial_workflow"
 media_folder: "images"
 public_folder: "/images"
 
-collections:
-  - name: "articulos"
-    label: "Lista de Artículos"
-    folder: "data"
-    extension: json
-    format: json
-    create: true
-    slug: "articulos"
-    fields:
-      - {label: "Artículos", name: "articulos", widget: "list", fields: [
-          {label: "ID", name: "id", widget: "string"},
-          {label: "Slug", name: "slug", widget: "string"},
-          {label: "Título", name: "titulo", widget: "string"},
-          {label: "Descripción", name: "descripcion", widget: "text"},
-          {label: "Fecha", name: "fecha", widget: "string"},
-          {label: "Categoría", name: "categoria", widget: "select", options: [
-            {label: "Geopolítica", value: "Geopolítica"},
-            {label: "Economía", value: "Economía"},
-            {label: "Élites", value: "Élites"},
-            {label: "Tecnología", value: "Tecnología"}
-          ]},
-          {label: "Video ID de YouTube", name: "video_id", widget: "string"},
-          {label: "Tiempo (minutos)", name: "time", widget: "number"},
-          {label: "Destacado", name: "destacado", widget: "boolean"}
-        ]}
+# Configuración de media
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: terapialiberal
+    api_key: "123456789"
 
-  - name: "articles"
-    label: "Artículos"
+collections:
+  # Artículos completos (páginas individuales)
+  - name: "posts"
+    label: "Artículos / Videos"
     folder: "articles"
     create: true
     slug: "{{slug}}"
+    format: "frontmatter"
+    extension: "md"
+    preview_path: "articles/{{slug}}"
     fields:
-      - {label: "Título", name: "title", widget: "string"}
-      - {label: "Fecha de Publicación", name: "date", widget: "datetime"}
-      - {label: "Descripción breve", name: "description", widget: "text"}
-      - {label: "Categoría", name: "category", widget: "select", options: [{label: "Geopolítica", value: "Geopolítica"}, {label: "Economía", value: "Economía"}, {label: "Élites", value: "Élites"}, {label: "Tecnología", value: "Tecnología"}, {label: "Tecnocracia", value: "Tecnocracia"}]}
-      - {label: "Tags (separados por coma)", name: "tags", widget: "string", required: false}
+      - {label: "Título", name: "title", widget: "string", required: true}
+      - {label: "Fecha de Publicación", name: "date", widget: "datetime", required: true}
+      - {label: "Descripción Corta", name: "description", widget: "text", required: true, hint: "Breve descripción para mostrar en el home"}
+      - {label: "Tipo de Contenido", name: "tipo", widget: "select", options: [
+          {label: "🎬 Video", value: "video"},
+          {label: "📝 Artículo", value: "articulo"}
+        ], default: "video", hint: "Video = tiene video de YouTube, Artículo = solo texto"}
+      - {label: "ID del Video (YouTube)", name: "video_id", widget: "string", required: false, hint: "Solo el ID, ej: 9AMPffjQREY"}
+      - {label: "Imagen de Portada", name: "image", widget: "image", required: false, hint: "Imagen para el artículo. Si es video, se usa la miniatura de YouTube si no hay imagen"}
+      - {label: "Etiquetas", name: "tags", widget: "list", required: false, hint: "Etiquetas separadas por enter"}
       - {label: "Autor", name: "author", widget: "string", default: "Nicolás Martínez Lage"}
-      - {label: "Artículo destacado", name: "featured", widget: "boolean", default: false, required: false}
-      - {label: "Video de YouTube", name: "video_id", widget: "string", required: false, hint: "Pega la URL completa o solo el ID"}
-      - {label: "Imagen destacada", name: "image", widget: "image", required: false}
-      - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
-      - {label: "Contenido", name: "body", widget: "markdown"}
+      - {label: "Marcar como Destacado", name: "featured", widget: "boolean", default: false, hint: "Aparece primero en el home"}
+      - {label: "Contenido del Artículo", name: "body", widget: "markdown", required: true}
 
-  - name: "articulos_json"
-    label: "Lista de Artículos (Home)"
-    file: "data/articulos.json"
+  # Configuración del sitio
+  - name: "settings"
+    label: "Configuración"
+    delete: false
+    extension: "yml"
+    format: "yml"
+    create: true
+    filename: "site-settings"
     fields:
-      - {label: "Artículos", name: "articulos", widget: "list", fields: [
-          {label: "ID", name: "id", widget: "string"},
-          {label: "Slug", name: "slug", widget: "string"},
-          {label: "Título", name: "titulo", widget: "string"},
-          {label: "Descripción", name: "descripcion", widget: "text"},
-          {label: "Fecha", name: "fecha", widget: "string"},
-          {label: "Categoría", name: "categoria", widget: "string"},
-          {label: "Video ID", name: "video_id", widget: "string"},
-          {label: "Tiempo (min)", name: "time", widget: "number"},
-          {label: "Destacado", name: "destacado", widget: "boolean"}
-        ]}
+      - {label: "Título del Sitio", name: "site_title", widget: "string", default: "Terapia Liberal"}
+      - {label: "Descripción", name: "site_description", widget: "text", default: "Análisis independiente sobre economía, geopolítica y filosofía liberal"}
+      - {label: "YouTube URL", name: "youtube_url", widget: "string", default: "https://www.youtube.com/@terapialiberal"}
+      - {label: "Twitter/X URL", name: "twitter_url", widget: "string", default: "https://x.com/terapia_liberal"}
+      - {label: "Patreon URL", name: "patreon_url", widget: "string", default: "https://www.patreon.com/terapialiberal"}
+      - {label: "Email para Newsletter", name: "newsletter_email", widget: "string", hint: "Email donde recibirás las suscripciones"}
