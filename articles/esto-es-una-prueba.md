@@ -5,7 +5,7 @@ description: Esto es una p´rueba de pfpoafnjpaf
 tipo: articulo
 image: https://www.reuters.com/resizer/v2/IRUVK6XD7NJ7PIYMDFJFUWVUQ4.jpg?auth=42d39ba231e2e1d4850a4ba5eb3cfd0d8d86a76b0d01564ef7292e228986c503&width=960&quality=80
 author: Nicolás Martínez Lage
-featured: false
+featured: true
 ---
 
 Resumen
