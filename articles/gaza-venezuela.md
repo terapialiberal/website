@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "GAZA S.A. y VENEZUELA INC.: Los Arquitectos de la WW3"
 date: 2025-09-16
 description: "Análisis profundo de cómo Jared Kushner, Tony Blair y los megainversores globales transforman conflictos geopolíticos en oportunidades de negocio multimillonarias."

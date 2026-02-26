@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "Caos Programado: El Camino hacia una Crisis Total"
 date: 2025-10-10
 description: "Análisis profundo del plan tecnocrático detrás del caos aparente en Estados Unidos. Exploramos las conexiones entre Peter Thiel, Palantir, la Operación Gladio y el futuro de la democracia americana."

@@ -6,6 +6,10 @@
     <title>Terapia Liberal | Análisis Independiente</title>
     <meta name="description" content="Biblioteca de investigaciones. Análisis independientes sobre economía, geopolítica y filosofía liberal.">
 
+    <!-- Preconnect para acelerar carga -->
+    <link rel="preconnect" href="https://img.youtube.com">
+    <link rel="preconnect" href="https://i.postimg.cc">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -111,6 +115,45 @@
         }
 
         .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4); }
+
+        /* Skeleton Loading */
+        .skeleton {
+            background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 8px;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .skeleton-video { height: 280px; border-radius: 12px; }
+        .skeleton-date { height: 16px; width: 80px; }
+        .skeleton-title { height: 32px; width: 90%; }
+        .skeleton-desc { height: 20px; width: 100%; }
+        .skeleton-desc:nth-child(2) { width: 80%; }
+        .skeleton-btn { height: 44px; width: 140px; border-radius: 8px; margin-top: 16px; }
+        .skeleton-card { height: 320px; border-radius: 16px; }
+        .skeleton-text { height: 16px; margin-bottom: 8px; border-radius: 4px; }
+        .skeleton-text:nth-child(2) { width: 70%; }
+
+        /* Skeleton Loading */
+        .skeleton {
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 8px;
+        }
+        .skeleton-video { height: 280px; border-radius: 12px; }
+        .skeleton-date { height: 16px; width: 100px; }
+        .skeleton-title { height: 32px; width: 80%; }
+        .skeleton-desc { height: 20px; width: 100%; }
+        .skeleton-desc:nth-child(2) { width: 90%; }
+        .skeleton-btn { height: 44px; width: 160px; margin-top: 16px; }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
 
         /* Header */
         header {
@@ -768,12 +811,12 @@
     <header style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(5,5,5,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08);">
         <div style="max-width:1400px;margin:0 auto;padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;">
             <a href="/" style="text-decoration:none;border:none;">
-                <img src="https://yt3.googleusercontent.com/C14_H7WGmrRh41ntN7_ljEOp1bIZfFtUyorii6rfPnk5jj8x1FvkgB4FsNXSJ04g9ca8OuHvSQ=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj" alt="Terapia Liberal" style="height:65px;width:auto;border:none;">
+                <img src="https://yt3.googleusercontent.com/C14_H7WGmrRh41ntN7_ljEOp1bIZfFtUyorii6rfPnk5jj8x1FvkgB4FsNXSJ04g9ca8OuHvSQ=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj" alt="Terapia Liberal" style="height:80px;width:auto;border:none;">
             </a>
             <nav style="display:flex;align-items:center;gap:1.5rem;">
-                <a href="#videos" style="color:#9ca3af;text-decoration:none;border:none;font-weight:500;">Videos</a>
-                <a href="#articulos" style="color:#9ca3af;text-decoration:none;border:none;font-weight:500;">Artículos</a>
-                <a href="https://www.patreon.com/terapialiberal" target="_blank" style="padding:0.6rem 1.5rem;background:linear-gradient(135deg,#d4af37,#dc2626);color:#000!important;border-radius:8px;font-weight:600;text-decoration:none;border:none;">Suscribirse</a>
+                <a href="#videos" onclick="document.getElementById('videos').scrollIntoView({behavior:'smooth'});return false;" style="color:#9ca3af;text-decoration:none;border:none;font-weight:500;cursor:pointer;">Videos</a>
+                <a href="#articulos" onclick="document.getElementById('articulos').scrollIntoView({behavior:'smooth'});return false;" style="color:#9ca3af;text-decoration:none;border:none;font-weight:500;cursor:pointer;">Artículos</a>
+                <a href="https://www.patreon.com/terapialiberal" target="_blank" style="padding:0.6rem 1.5rem;background:linear-gradient(135deg,#d4af37,#dc2626);color:#000!important;border-radius:8px;font-weight:600;text-decoration:none;border:none;">Apoyar el Proyecto</a>
             </nav>
         </div>
     </header>
@@ -801,7 +844,23 @@
                 <!-- Destacado - MÁS GRANDE -->
                 <section class="mb-10">
                     <h3 class="text-2xl font-semibold mb-4 gold-text">⭐ Análisis Destacado</h3>
-                    <div id="featured-container" class="section-bg rounded-2xl p-8"></div>
+                    <div id="featured-container" class="section-bg rounded-2xl p-8">
+                        <!-- Skeleton loader -->
+                        <div class="animate-pulse">
+                            <div class="flex flex-col md:flex-row gap-8">
+                                <div class="md:w-1/2">
+                                    <div class="bg-gray-800 rounded-xl h-64"></div>
+                                </div>
+                                <div class="md:w-1/2">
+                                    <div class="h-4 bg-gray-800 rounded w-20 mb-4"></div>
+                                    <div class="h-8 bg-gray-800 rounded w-full mb-2"></div>
+                                    <div class="h-8 bg-gray-800 rounded w-3/4 mb-4"></div>
+                                    <div class="h-4 bg-gray-800 rounded w-full mb-2"></div>
+                                    <div class="h-4 bg-gray-800 rounded w-5/6"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- Grilla - Todos los artículos -->
@@ -813,7 +872,7 @@
                     <div id="grid-container" class="grid md:grid-cols-2 lg:grid-cols-2 gap-6"></div>
                     <div class="text-center mt-8">
                         <button id="load-more-btn" class="btn-gradient hidden" onclick="loadMore()">
-                            <i class="fas fa-plus mr-2"></i>Ver más
+                            <i class="fas fa-plus mr-2"></i>Cargar más antiguos
                         </button>
                     </div>
                 </section>
@@ -882,8 +941,8 @@
                 <h4 class="footer-title">Navegación</h4>
                 <nav class="footer-links" style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
                     <a href="/" class="footer-link">Inicio</a>
-                    <a href="#videos" class="footer-link">Videos</a>
-                    <a href="#articulos" class="footer-link">Artículos</a>
+                    <a href="#videos" onclick="document.getElementById('videos').scrollIntoView({behavior:'smooth'});return false;" class="footer-link">Videos</a>
+                    <a href="#articulos" onclick="document.getElementById('articulos').scrollIntoView({behavior:'smooth'});return false;" class="footer-link">Artículos</a>
                 </nav>
             </div>
             <div class="footer-social-section">
@@ -943,8 +1002,8 @@
         // Variables globales
         let allArticles = [];
         let filteredArticles = [];
-        let displayedCount = 100; // Más artículos visibles
-        const PER_PAGE = 50;
+        let displayedCount = 6; // Mostrar 6 artículos inicialmente
+        const PER_PAGE = 6; // Cargar 6 más al hacer click
 
         // Back to top
         window.addEventListener('scroll', () => {
@@ -979,7 +1038,7 @@
                 { title: "Wall Street Advierte: 'Primero un Gran Repunte, Luego un Crash'", description: "Las advertencias y el paralelismo histórico con 1929.", url: "/articles/wall-street-repunte-crash-analisis/", fecha: "03/10/2025", video_id: "k40I-u2gi50", tipo: "video", tags: ["economía", "wall street", "crash", "1929"], image: "https://img.youtube.com/vi/k40I-u2gi50/maxresdefault.jpg" },
                 { title: "La División del Mundo en Bloques", description: "La división del mundo en bloques económicos y la reestructuración de la gobernanza mundial.", url: "/articles/divide-y-conquista/", fecha: "01/10/2025", video_id: "3nfqpb2RLNU", tipo: "video", tags: ["geopolítica", "bloques", "china", "trump"], image: "https://img.youtube.com/vi/3nfqpb2RLNU/maxresdefault.jpg" },
                 { title: "El Cuarto Giro: Ciclos Históricos y Crisis Institucional", description: "Análisis de la teoría del Cuarto Giro de Strauss-Howe aplicada al contexto actual.", url: "/articles/cuarto-giro/", fecha: "31/08/2025", video_id: "Bx6zBh7gunI", tipo: "video", tags: ["historia", "ciclos", "crisis", "institucional"], image: "https://img.youtube.com/vi/Bx6zBh7gunI/maxresdefault.jpg" },
-                { title: "Trump Activa Poderes de Emergencia: COG y Proyecto 2025", description: "Análisis sobre la activación de poderes presidenciales extraordinarios y la militarización de Washington DC.", url: "/articles/trump-poderes-emergencia-cog-proyecto-2025/", fecha: "20/08/2025", video_id: "hjuWL_z9Vh0", tipo: "video", tags: ["política", "trump", "cog", "washington"], image: "https://img.youtube.com/vi/hjuWL_z9Vh0/maxresdefault.jpg" },
+                { title: "Trump Activa Poderes de Emergencia: COG y Proyecto 2025", description: "Análisis sobre la activación de poderes presidenciales extraordinarios y la militarización de Washington DC.", url: "/articles/trump-poderes-emergencia-cog-proyecto-2025/", fecha: "20/08/2025", video_id: "hjuWL_z9Vh0", tipo: "video", tags: ["política", "trump", "cog", "washington"], image: "https://img.youtube.com/vi/hjuWL_z9Vh0/hqdefault.jpg" },
                 { title: "El Gran Tablero Mundial: La Profecía de Brzezinski", description: "Análisis definitivo de la visión geopolítica de Zbigniew Brzezinski y su impacto en el orden mundial.", url: "/articles/zbig/", fecha: "18/08/2025", video_id: "QTDXeE8bey0", tipo: "video", tags: ["geopolítica", "brzezinski", "europa", "eurasia"], image: "https://img.youtube.com/vi/QTDXeE8bey0/maxresdefault.jpg" },
                 { title: "LOS DUEÑOS DE MAGA y el FUTURO", description: "Investigación sobre los dueños de MAGA y las proyecciones futuras.", url: "/articles/duenos-maga/", fecha: "07/08/2025", video_id: "-wntkT1oDS4", tipo: "video", tags: ["política", "maga", "trump", "elecciones"], image: "https://img.youtube.com/vi/-wntkT1oDS4/maxresdefault.jpg" },
                 { title: "TRUMP ES el Caballo de Troya Tecnocrático", description: "La batalla por el control ha comenzado. La verdadera naturaleza del movimiento Trump.", url: "/articles/trump-cbdc/", fecha: "24/07/2025", video_id: "UEgEIzZ9dYo", tipo: "video", tags: ["economía", "cbdc", "trump", "tecnocracia"], image: "https://img.youtube.com/vi/UEgEIzZ9dYo/maxresdefault.jpg" },
@@ -1054,12 +1113,12 @@
                 const tipoLabel = isVideo ? 'VIDEO' : 'ARTÍCULO';
                 const tipoClass = isVideo ? 'video' : 'articulo';
                 const youtubeUrl = isVideo ? `https://youtu.be/${a.video_id}` : '';
-                // Si es video, thumbnail lleva a YouTube, si es artículo lleva al artículo
-                const thumbLink = isVideo ? youtubeUrl : a.url;
+                // El thumbnail SIEMPRE lleva al artículo, YouTube se abre en botón separado
+                const thumbLink = a.url;
 
                 return `
                 <article class="article-card" style="animation-delay: ${i * 0.1}s">
-                    <a href="${thumbLink}" ${isVideo ? 'target="_blank"' : ''} class="card-thumb-link">
+                    <a href="${thumbLink}" class="card-thumb-link">
                         <div class="card-thumb">
                             <img src="${img}" alt="${a.title}" onerror="this.src='https://img.youtube.com/vi/${a.video_id}/hqdefault.jpg'" loading="lazy">
                             <span class="card-badge ${tipoClass}">${tipoLabel}</span>

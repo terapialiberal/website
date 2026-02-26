@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "Wall Street Advierte: Primero un Gran Repunte, Luego un Crash"
 date: 2025-10-03
 description: "Análisis profundo sobre las advertencias de Wall Street, el paralelismo con el crash de 1929, y la pérdida del estatus del dólar como moneda de reserva frente al oro."

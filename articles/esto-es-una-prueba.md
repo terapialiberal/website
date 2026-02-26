@@ -1,4 +1,5 @@
 ---
+layout: article
 title: Esto es una Prueba
 date: 2026-02-26T10:21:00.000-03:00
 description: Esto es una p´rueba de pfpoafnjpaf

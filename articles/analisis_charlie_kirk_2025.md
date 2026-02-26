@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "El Asesinato de Charlie Kirk y el Fracturamiento del Discurso Político Estadounidense"
 date: 2025-10-24
 description: "Análisis profundo del asesinato de Charlie Kirk, sus implicaciones para la libertad de expresión y el futuro de la violencia política en Estados Unidos. Examen de las operaciones psicológicas y manipulación mediática en el contexto actual."

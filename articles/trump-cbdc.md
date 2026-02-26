@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "Trump: El Caballo de Troya Tecnocrático"
 date: 2025-07-24
 description: "Análisis profundo de cómo la Big Beautiful Bill de Trump implementa infraestructura CBDC encubierta y el sistema AI.GOV tecnocrático"

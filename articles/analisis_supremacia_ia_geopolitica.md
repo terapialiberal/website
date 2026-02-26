@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "La Lucha por la Supremacía del Mañana: Análisis Geopolítico de la IA"
 date: 2025-10-15
 description: "Análisis profundo de la geopolítica de la inteligencia artificial, la guerra comercial entre Estados Unidos y China, y el papel de Londres en la supremacía tecnológica global."

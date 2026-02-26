@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "Los Ganadores del Nuevo Complejo Militar TECNOLÓGICO"
 date: 2025-06-20
 description: "Análisis del entramado entre Silicon Valley, Wall Street y el complejo militar tecnológico global. La transición hacia un sistema donde la guerra es el negocio."

@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "La División del Mundo en Bloques: El Nuevo Orden Geopolítico"
 date: 2025-01-01
 description: "Análisis profundo de la división geopolítica mundial en bloques, el nuevo orden mundial, y la lucha por el control del Heartland euroasiático."

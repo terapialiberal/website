@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "Los Dueños de MAGA y el Futuro"
 date: 2025-01-01
 description: "Análisis profundo de Peter Thiel, Donald Trump, Jeffrey Epstein, Steve Bannon, JD Vance, Palantir, tecnocracia, vigilancia, IA, y el control del poder político en Estados Unidos"

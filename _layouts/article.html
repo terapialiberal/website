@@ -285,21 +285,22 @@
     </style>
 </head>
 <body class="dark">
-    <!-- Header - Imagen YouTube clicable (más grande) -->
+    <!-- Header - Imagen YouTube clicable -->
     <header style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(5,5,5,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08);">
         <div style="max-width:1400px;margin:0 auto;padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;">
             <a href="/" style="text-decoration:none;border:none;">
-                <img src="https://yt3.googleusercontent.com/C14_H7WGmrRh41ntN7_ljEOp1bIZfFtUyorii6rfPnk5jj8x1FvkgB4FsNXSJ04g9ca8OuHvSQ=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj" alt="Terapia Liberal" style="height:65px;width:auto;border:none;">
+                <img src="https://yt3.googleusercontent.com/C14_H7WGmrRh41ntN7_ljEOp1bIZfFtUyorii6rfPnk5jj8x1FvkgB4FsNXSJ04g9ca8OuHvSQ=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj" alt="Terapia Liberal" style="height:80px;width:auto;border:none;">
             </a>
             <nav style="display:flex;align-items:center;gap:1.5rem;">
-                <a href="/" style="color:#9ca3af;text-decoration:none;border:none;font-weight:500;">Inicio</a>
-                <a href="https://www.patreon.com/terapialiberal" target="_blank" style="padding:0.6rem 1.5rem;background:linear-gradient(135deg,#d4af37,#dc2626);color:#000!important;border-radius:8px;font-weight:600;text-decoration:none;border:none;">Suscribirse</a>
+                <a href="#videos" onclick="document.getElementById('videos').scrollIntoView({behavior:'smooth'});return false;" style="color:#9ca3af;text-decoration:none;border:none;font-weight:500;cursor:pointer;">Videos</a>
+                <a href="#articulos" onclick="document.getElementById('articulos').scrollIntoView({behavior:'smooth'});return false;" style="color:#9ca3af;text-decoration:none;border:none;font-weight:500;cursor:pointer;">Artículos</a>
+                <a href="https://www.patreon.com/terapialiberal" target="_blank" style="padding:0.6rem 1.5rem;background:linear-gradient(135deg,#d4af37,#dc2626);color:#000!important;border-radius:8px;font-weight:600;text-decoration:none;border:none;">Apoyar el Proyecto</a>
             </nav>
         </div>
     </header>
 
     <!-- Article -->
-    <main class="max-w-4xl mx-auto px-6 py-12" style="padding-top: 100px;">
+    <main class="max-w-4xl mx-auto px-6 py-12" style="padding-top: 120px;">
         <!-- Volver -->
         <a href="/" class="inline-flex items-center gap-2 text-gray-500 hover:text-gold mb-8">
             <i class="fas fa-arrow-left"></i> Volver al inicio

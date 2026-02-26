@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "El Cuarto Giro: Análisis de Ciclos Históricos y Crisis Institucional"
 date: 2025-01-01
 description: "Análisis profundo de la teoría del Cuarto Giro de Strauss-Howe aplicada al contexto político y económico actual"

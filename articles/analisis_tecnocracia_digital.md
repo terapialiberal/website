@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "El Avance de la Tecnocracia Digital: Análisis del ID Digital de Starmer"
 date: 2025-09-26
 description: "Análisis profundo del sistema de identificación digital obligatorio anunciado por Keir Starmer y su conexión con la tecnocracia global"
