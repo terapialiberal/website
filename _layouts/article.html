@@ -24,13 +24,45 @@
     <style>
         :root { --gold: #d4af37; --red: #dc2626; }
 
-        /* Modo Oscuro */
+        /* Fondo Premium Dark */
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: #ffffff;
+            background-color: #050505;
+            color: #e5e7eb;
             min-height: 100vh;
-            line-height: 1.7;
+            line-height: 1.8;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Ruido sutil */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
         }
 
         /* Modo Claro */
@@ -253,28 +285,21 @@
     </style>
 </head>
 <body class="dark">
-    <!-- Header -->
-    <header>
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="logo-section">
-                <img src="https://yt3.googleusercontent.com/ZzVyDrXt4x8YWoKbISHZzC9CCtkEPCN4GRET1Xxf_wssNyw7mfN-xTbBmpwEJHO0DRQrg0Dgug=s900-c-k-c0x00ffffff-no-rj" alt="Logo" class="logo">
-                <a href="/" class="brand-title">Terapia Liberal</a>
-            </div>
-            <div class="flex items-center">
-                <nav class="social-icons">
-                    <a href="https://www.youtube.com/@terapialiberal" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://x.com/terapia_liberal" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.patreon.com/terapialiberal" target="_blank"><i class="fab fa-patreon"></i></a>
-                </nav>
-                <button class="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
+    <!-- Header - Imagen YouTube clicable (más grande) -->
+    <header style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(5,5,5,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08);">
+        <div style="max-width:1400px;margin:0 auto;padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;">
+            <a href="/" style="text-decoration:none;border:none;">
+                <img src="https://yt3.googleusercontent.com/C14_H7WGmrRh41ntN7_ljEOp1bIZfFtUyorii6rfPnk5jj8x1FvkgB4FsNXSJ04g9ca8OuHvSQ=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj" alt="Terapia Liberal" style="height:65px;width:auto;border:none;">
+            </a>
+            <nav style="display:flex;align-items:center;gap:1.5rem;">
+                <a href="/" style="color:#9ca3af;text-decoration:none;border:none;font-weight:500;">Inicio</a>
+                <a href="https://www.patreon.com/terapialiberal" target="_blank" style="padding:0.6rem 1.5rem;background:linear-gradient(135deg,#d4af37,#dc2626);color:#000!important;border-radius:8px;font-weight:600;text-decoration:none;border:none;">Suscribirse</a>
+            </nav>
         </div>
     </header>
 
     <!-- Article -->
-    <main class="max-w-4xl mx-auto px-6 py-12">
+    <main class="max-w-4xl mx-auto px-6 py-12" style="padding-top: 100px;">
         <!-- Volver -->
         <a href="/" class="inline-flex items-center gap-2 text-gray-500 hover:text-gold mb-8">
             <i class="fas fa-arrow-left"></i> Volver al inicio

@@ -1,12 +1,12 @@
-# Netlify Configuration for Decap CMS
-# This file tells Netlify how to process the site
+# Netlify Configuration for Terapia Liberal
+# Uses Jekyll to process CMS articles and auto-generate articles.json
 
 [build]
-  command = "echo 'No build needed for static site'"
-  publish = "."
+  command = "bundle exec jekyll build"
+  publish = "_site"
 
-# Redirect for clean URLs
+# Redirect for clean URLs (only for non-Jekyll paths)
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/admin/*"
+  to = "/admin/:splat"
   status = 200

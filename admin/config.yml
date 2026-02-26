@@ -4,6 +4,86 @@ backend:
 
 publish_mode: "editorial_workflow"
 
+# Configuración global del CMS
+global_before: |
+  <style>
+    /* Modo Oscuro del CMS */
+    body {
+      --color-bg: #1a1a2e;
+      --color-fg: #eaeaea;
+      --color-control-bg: #16213e;
+      --color-control-fg: #eaeaea;
+      --color-border: #0f3460;
+    }
+    body.dark-theme-active {
+      background: #1a1a2e;
+      color: #eaeaea;
+    }
+    body.dark-theme-active .nc-root,
+    body.dark-theme-active .nc-ui-frame,
+    body.dark-theme-active .nc-widget-field {
+      background: #1a1a2e !important;
+      color: #eaeaea !important;
+    }
+    body.dark-theme-active input,
+    body.dark-theme-active textarea,
+    body.dark-theme-active select,
+    body.dark-theme-active .nc-select,
+    body.dark-theme-active .nc-widget-string input,
+    body.dark-theme-active .nc-widget-text textarea {
+      background: #16213e !important;
+      color: #eaeaea !important;
+      border-color: #0f3460 !important;
+    }
+    body.dark-theme-active .nc-panel,
+    body.dark-theme-active .nc-panel-header,
+    body.dark-theme-active .nc-panel-scroll,
+    body.dark-theme-active .nc-card {
+      background: #1a1a2e !important;
+      border-color: #0f3460 !important;
+    }
+    body.dark-theme-active .nc-panel-header-title,
+    body.dark-theme-active .nc-panel-content,
+    body.dark-theme-active h1, body.dark-theme-active h2, body.dark-theme-active h3,
+    body.dark-theme-active label, body.dark-theme-active .nc-label {
+      color: #eaeaea !important;
+    }
+    body.dark-theme-active .nc-button,
+    body.dark-theme-active .nc-btn {
+      background: #0f3460 !important;
+      color: #eaeaea !important;
+      border-color: #e94560 !important;
+    }
+    body.dark-theme-active .nc-button.primary,
+    body.dark-theme-active .nc-btn.primary {
+      background: #e94560 !important;
+    }
+    /* Toggle switch */
+    .cms-dark-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      background: #16213e;
+      border: 2px solid #0f3460;
+      border-radius: 20px;
+      padding: 8px 16px;
+      color: #eaeaea;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
+  <button class="cms-dark-toggle" onclick="toggleCMSTheme()">🌙 Modo Oscuro</button>
+  <script>
+    function toggleCMSTheme() {
+      document.body.classList.toggle('dark-theme-active');
+      localStorage.setItem('cms-dark-mode', document.body.classList.contains('dark-theme-active'));
+    }
+    if (localStorage.getItem('cms-dark-mode') === 'true') {
+      document.body.classList.add('dark-theme-active');
+    }
+  </script>
+
 media_folder: "images"
 public_folder: "/images"
 
@@ -30,8 +110,9 @@ collections:
       - {label: "Descripción Corta", name: "description", widget: "text", required: true, hint: "Breve descripción para mostrar en el home"}
       - {label: "Tipo de Contenido", name: "tipo", widget: "select", options: [
           {label: "🎬 Video", value: "video"},
-          {label: "📝 Artículo", value: "articulo"}
-        ], default: "video", hint: "Video = tiene video de YouTube, Artículo = solo texto"}
+          {label: "📝 Artículo", value: "articulo"},
+          {label: "📌 Otros", value: "otros"}
+        ], default: "video", hint: "Video = tiene video de YouTube, Artículo = solo texto, Otros = otro tipo de contenido"}
       - {label: "ID del Video (YouTube)", name: "video_id", widget: "string", required: false, hint: "Solo el ID, ej: 9AMPffjQREY"}
       - {label: "Imagen de Portada", name: "image", widget: "image", required: false, hint: "Imagen para el artículo. Si es video, se usa la miniatura de YouTube si no hay imagen"}
       - {label: "Etiquetas", name: "tags", widget: "list", required: false, hint: "Etiquetas separadas por enter"}

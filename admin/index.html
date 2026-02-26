@@ -5,8 +5,315 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Terapia Liberal</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+        /* ============================================
+           MODO OSCURO FORZADO - Terapia Liberal
+           ============================================ */
+
+        :root {
+            --cms-bg: #1a1a1a;
+            --cms-bg-secondary: #242424;
+            --cms-bg-tertiary: #2d2d2d;
+            --cms-text: #e5e5e5;
+            --cms-text-secondary: #a3a3a3;
+            --cms-border: #404040;
+            --cms-primary: #d4af37;
+            --cms-primary-hover: #b8962e;
+        }
+
+        html.dark {
+            color-scheme: dark;
+        }
+
+        /* Fondo principal */
+        html.dark body,
+        html.dark .nc-root,
+        html.dark .nc-app-container,
+        html.dark .nc-layout,
+        html.dark .nc-sidebar,
+        html.dark .nc-main,
+        html.dark .nc-editor-container {
+            background-color: var(--cms-bg) !important;
+            color: var(--cms-text) !important;
+        }
+
+        /* Sidebar */
+        html.dark .nc-sidebar,
+        html.dark .nc-sidebar {
+            background-color: var(--cms-bg-secondary) !important;
+            border-color: var(--cms-border) !important;
+        }
+
+        /* Encabezados */
+        html.dark h1,
+        html.dark h2,
+        html.dark h3,
+        html.dark h4,
+        html.dark h5,
+        html.dark h6,
+        html.dark .nc-heading,
+        html.dark .nc-heading-small {
+            color: var(--cms-text) !important;
+        }
+
+        /* Links */
+        html.dark a,
+        html.dark .nc-link {
+            color: var(--cms-primary) !important;
+        }
+
+        /* Botones */
+        html.dark .nc-button,
+        html.dark .btn,
+        html.dark button,
+        html.dark .nc-btn {
+            background-color: var(--cms-bg-tertiary) !important;
+            color: var(--cms-text) !important;
+            border-color: var(--cms-border) !important;
+        }
+
+        html.dark .nc-button-primary,
+        html.dark .btn-primary,
+        html.dark .nc-button.button-primary {
+            background-color: var(--cms-primary) !important;
+            color: #1a1a1a !important;
+            border-color: var(--cms-primary) !important;
+        }
+
+        /* Inputs */
+        html.dark input,
+        html.dark textarea,
+        html.dark select,
+        html.dark .nc-input,
+        html.dark .nc-text-input,
+        html.dark .nc-textarea,
+        html.dark .nc-select,
+        html.dark .MuiInputBase-input,
+        html.dark .MuiOutlinedInput-input {
+            background-color: var(--cms-bg-secondary) !important;
+            color: var(--cms-text) !important;
+            border-color: var(--cms-border) !important;
+        }
+
+        /* Labels */
+        html.dark label,
+        html.dark .nc-label,
+        html.dark .MuiFormLabel-root {
+            color: var(--cms-text-secondary) !important;
+        }
+
+        /* Cards y paneles */
+        html.dark .nc-card,
+        html.dark .card,
+        html.dark .nc-panel,
+        html.dark .panel,
+        html.dark .nc-editor-panel,
+        html.dark .nc-preview-pane {
+            background-color: var(--cms-bg-secondary) !important;
+            border-color: var(--cms-border) !important;
+        }
+
+        /* Listados */
+        html.dark .nc-list,
+        html.dark .nc-collection-page-list,
+        html.dark .nc-entry-list {
+            background-color: var(--cms-bg) !important;
+        }
+
+        html.dark .nc-entry-list-item,
+        html.dark .nc-list-item {
+            background-color: var(--cms-bg-secondary) !important;
+            border-color: var(--cms-border) !important;
+        }
+
+        html.dark .nc-entry-list-item:hover,
+        html.dark .nc-list-item:hover {
+            background-color: var(--cms-bg-tertiary) !important;
+        }
+
+        /* Search */
+        html.dark .nc-search-input,
+        html.dark .nc-search {
+            background-color: var(--cms-bg-secondary) !important;
+            color: var(--cms-text) !important;
+        }
+
+        /* Menú dropdown */
+        html.dark .nc-dropdown,
+        html.dark .dropdown-menu,
+        html.dark .MuiMenu-paper {
+            background-color: var(--cms-bg-secondary) !important;
+            border-color: var(--cms-border) !important;
+        }
+
+        html.dark .nc-dropdown-item,
+        html.dark .dropdown-item,
+        html.dark .MuiMenuItem-root {
+            color: var(--cms-text) !important;
+        }
+
+        html.dark .nc-dropdown-item:hover,
+        html.dark .dropdown-item:hover,
+        html.dark .MuiMenuItem-root:hover {
+            background-color: var(--cms-bg-tertiary) !important;
+        }
+
+        /* Scrollbar */
+        html.dark ::-webkit-scrollbar {
+            background: var(--cms-bg-secondary);
+        }
+
+        html.dark ::-webkit-scrollbar-thumb {
+            background: var(--cms-border);
+            border-radius: 4px;
+        }
+
+        html.dark ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Diálogos modales */
+        html.dark .nc-modal,
+        html.dark .modal,
+        html.dark .MuiDialog-paper {
+            background-color: var(--cms-bg-secondary) !important;
+            border-color: var(--cms-border) !important;
+        }
+
+        /* Toggle botón */
+        .theme-toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 99999;
+            background: linear-gradient(135deg, #d4af37 0%, #b8962e 100%);
+            color: #1a1a1a;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Inter', -apple-system, sans-serif;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .theme-toggle .icon {
+            font-size: 16px;
+        }
+
+        /* Ocultar toggle cuando CMS carga completamente */
+        body.cms-ready .theme-toggle {
+            display: none !important;
+        }
+
+        /* Loading spinner */
+        html.dark .nc-loading-spinner,
+        html.dark .spinner {
+            border-color: var(--cms-border) !important;
+            border-top-color: var(--cms-primary) !important;
+        }
+    </style>
+    <script>
+        // ============================================
+        // Theme Toggle - Terapia Liberal CMS
+        // ============================================
+
+        (function() {
+            function getTheme() {
+                return localStorage.getItem('cms-theme') || 'dark';
+            }
+
+            function setTheme(theme) {
+                localStorage.setItem('cms-theme', theme);
+                document.documentElement.classList.remove('light', 'dark');
+                document.documentElement.classList.add(theme);
+                updateToggleButton(theme);
+            }
+
+            function toggleTheme() {
+                const current = getTheme();
+                const newTheme = current === 'dark' ? 'light' : 'dark';
+                setTheme(newTheme);
+            }
+
+            function updateToggleButton(theme) {
+                const btn = document.getElementById('theme-toggle-btn');
+                if (btn) {
+                    btn.innerHTML = theme === 'dark'
+                        ? '<span class="icon">☀️</span> Claro'
+                        : '<span class="icon">🌙</span> Oscuro';
+                }
+            }
+
+            // Aplicar tema al cargar página
+            document.addEventListener('DOMContentLoaded', function() {
+                const theme = getTheme();
+                document.documentElement.classList.add(theme);
+                updateToggleButton(theme);
+
+                // Escuchar cuando CMS está listo para ocultar toggle
+                window.addEventListener('load', function() {
+                    setTimeout(function() {
+                        document.body.classList.add('cms-ready');
+                    }, 3000);
+                });
+
+                // También observar cuando el CMS carga
+                var observer = new MutationObserver(function(mutations) {
+                    if (document.querySelector('.nc-root')) {
+                        document.body.classList.add('cms-ready');
+                        observer.disconnect();
+                    }
+                });
+                observer.observe(document.body, { childList: true, subtree: true });
+            });
+
+            // Exponer función globalmente
+            window.toggleTheme = toggleTheme;
+        })();
+
+        // ============================================
+        // Configuración Decap CMS
+        // ============================================
+        window.DECAP_CMS_CONFIG = {
+            config: {
+                theme: {
+                    colors: {
+                        primary: '#d4af37',
+                        accent: '#d4af37',
+                        success: '#10b981',
+                        warning: '#f59e0b',
+                        error: '#ef4444',
+                        info: '#3b82f6'
+                    }
+                },
+                media_library: {
+                    name: 'cloudinary',
+                    config: {
+                        cloud_name: 'terapialiberal',
+                        api_key: '123456789'
+                    }
+                }
+            }
+        };
+    </script>
 </head>
 <body>
+    <!-- Botón de toggle de tema -->
+    <button id="theme-toggle-btn" class="theme-toggle" onclick="toggleTheme()">
+        <span class="icon">☀️</span> Claro
+    </button>
+
     <script>
         // Inicializar Netlify Identity
         window.netlifyIdentity.on('init', function(user) {
@@ -15,7 +322,6 @@
             }
         });
 
-        // Silenciar errores menores
         window.netlifyIdentity.on('error', function(err) {
             console.log('Identity error:', err);
         });

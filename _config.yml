@@ -10,5 +10,7 @@ collections:
   posts:
     output: true
     permalink: /articles/:slug/
+    path: "articles"
 
 future: true
+keep_files: ["data", "css", "js", "images", "admin", "articles/*.html"]
