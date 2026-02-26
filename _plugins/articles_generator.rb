@@ -57,10 +57,10 @@ module ArticlesGenerator
       # Sort by date (newest first)
       articles.sort_by! { |a| Date.parse(a['fecha']) rescue Date.today }.reverse!
 
-      # Write JSON file
-      output_dir = site.dest
+      # Write JSON file to source data folder (Jekyll will copy to _site)
+      output_dir = File.expand_path('data', site.source)
       FileUtils.mkdir_p(output_dir)
-      File.write("#{output_dir}/data/articles.json", JSON.pretty_generate(articles))
+      File.write("#{output_dir}/articles.json", JSON.pretty_generate(articles))
 
       Jekyll.logger.info "ArticlesGenerator", "Generated #{articles.length} articles to data/articles.json"
     end
