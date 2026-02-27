@@ -619,7 +619,8 @@ a:hover {
 
 .featured-thumb {
     position: relative;
-    aspect-video;
+    aspect-ratio: 16/9;
+    min-height: 280px;
     overflow: hidden;
 }
 

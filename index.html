@@ -6,1060 +6,420 @@
     <title>Terapia Liberal | Análisis Independiente</title>
     <meta name="description" content="Biblioteca de investigaciones. Análisis independientes sobre economía, geopolítica y filosofía liberal.">
 
-    <!-- Preconnect para acelerar carga -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://img.youtube.com">
-    <link rel="preconnect" href="https://i.postimg.cc">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
-                    colors: { gold: '#d4af37', red: '#dc2626' }
+                    colors: {
+                        gold: '#d4af37',
+                        'gold-light': '#e5c158',
+                        'gold-dark': '#b8962e',
+                    }
                 }
             }
         }
     </script>
 
-    <style>
-        :root { --gold: #d4af37; --red: #dc2626; }
-
-        /* Modo Oscuro */
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: #ffffff;
-            min-height: 100vh;
-            line-height: 1.6;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        /* Modo Claro */
-        body.light {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            color: #1a1a1a;
-        }
-
-        .gold-text { color: var(--gold); }
-        body.light .gold-text { color: #b8962e; }
-
-        .section-bg {
-            background: rgba(31, 41, 55, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(75, 85, 99, 0.4);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s, border 0.3s;
-        }
-
-        body.light .section-bg {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        body.light .text-gray-300,
-        body.light .text-gray-400 { color: #4b5563; }
-
-        /* Video thumbnail */
-        .video-thumbnail {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            transition: transform 0.3s;
-            cursor: pointer;
-            padding-bottom: 56.25%;
-        }
-
-        .video-thumbnail img {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-        }
-
-        .video-thumbnail:hover { transform: scale(1.05); }
-
-        .play-button {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: var(--gold);
-            border-radius: 50%;
-            padding: 20px;
-            font-size: 28px;
-        }
-
-        .date-badge {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
-            color: #000;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .btn-gradient {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4); }
-
-        /* Skeleton Loading */
-        .skeleton {
-            background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 8px;
-        }
-        @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-        .skeleton-video { height: 280px; border-radius: 12px; }
-        .skeleton-date { height: 16px; width: 80px; }
-        .skeleton-title { height: 32px; width: 90%; }
-        .skeleton-desc { height: 20px; width: 100%; }
-        .skeleton-desc:nth-child(2) { width: 80%; }
-        .skeleton-btn { height: 44px; width: 140px; border-radius: 8px; margin-top: 16px; }
-        .skeleton-card { height: 320px; border-radius: 16px; }
-        .skeleton-text { height: 16px; margin-bottom: 8px; border-radius: 4px; }
-        .skeleton-text:nth-child(2) { width: 70%; }
-
-        /* Skeleton Loading */
-        .skeleton {
-            background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 8px;
-        }
-        .skeleton-video { height: 280px; border-radius: 12px; }
-        .skeleton-date { height: 16px; width: 100px; }
-        .skeleton-title { height: 32px; width: 80%; }
-        .skeleton-desc { height: 20px; width: 100%; }
-        .skeleton-desc:nth-child(2) { width: 90%; }
-        .skeleton-btn { height: 44px; width: 160px; margin-top: 16px; }
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        /* Header */
-        header {
-            background: rgba(10, 10, 10, 0.95);
-            border-bottom: 1px solid rgba(75, 85, 99, 0.4);
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            transition: background 0.3s, border 0.3s;
-        }
-
-        body.light header {
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-section .logo {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
-
-        .logo-section .brand-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .social-icons a {
-            color: #9ca3af;
-            font-size: 1.25rem;
-            margin-left: 1rem;
-            transition: color 0.3s;
-        }
-
-        body.light .social-icons a { color: #6b7280; }
-        .social-icons a:hover { color: var(--gold); }
-
-        .theme-toggle {
-            background: none;
-            border: 1px solid #9ca3af;
-            color: #9ca3af;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-left: 1rem;
-            transition: all 0.3s;
-        }
-
-        body.light .theme-toggle { color: #6b7280; border-color: #6b7280; }
-        .theme-toggle:hover { color: var(--gold); border-color: var(--gold); }
-
-        /* Footer */
-        footer {
-            background: rgba(10, 10, 10, 0.95);
-            border-top: 1px solid rgba(75, 85, 99, 0.4);
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-            text-align: center;
-            transition: background 0.3s, border 0.3s;
-        }
-
-        body.light footer {
-            background: rgba(255, 255, 255, 0.95);
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-social a {
-            color: #9ca3af;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        body.light .footer-social a { color: #6b7280; }
-        .footer-social a:hover { color: var(--gold); }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #9ca3af;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        body.light .footer-links a { color: #6b7280; }
-        .footer-links a:hover { color: var(--gold); }
-
-        /* Back to top */
-        #backToTop {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
-            color: #000;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.25rem;
-            display: none;
-            z-index: 1000;
-        }
-
-        #backToTop.show { display: flex; align-items: center; justify-content: center; }
-
-        /* Sidebar */
-        .sidebar { position: sticky; top: 100px; }
-
-        .newsletter-input {
-            background: rgba(17, 24, 39, 0.8);
-            border: 1px solid rgba(75, 85, 99, 0.4);
-            color: #fff;
-            padding: 12px 16px;
-            border-radius: 8px;
-            width: 100%;
-            margin-bottom: 12px;
-            transition: all 0.3s;
-        }
-
-        body.light .newsletter-input {
-            background: #f3f4f6;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            color: #1a1a1a;
-        }
-
-        .newsletter-input:focus { outline: none; border-color: var(--gold); }
-
-        /* Archive */
-        .archive-list { max-height: 300px; overflow-y: auto; }
-        .archive-list::-webkit-scrollbar { width: 6px; }
-        .archive-list::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
-
-        .archive-item {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(75, 85, 99, 0.3);
-            display: block;
-        }
-
-        body.light .archive-item { border-color: rgba(0,0,0,0.1); }
-        .archive-item:hover { padding-left: 8px; }
-
-        .archive-date { font-size: 11px; color: var(--gold); display: block; margin-bottom: 2px; }
-        .archive-title { font-size: 13px; color: #d1d5db; }
-        body.light .archive-title { color: #4b5563; }
-        .archive-item:hover .archive-title { color: var(--gold); }
-
-        .archive-toggle {
-            display: none;
-            color: var(--gold);
-            cursor: pointer;
-            font-size: 0.85rem;
-            margin-top: 10px;
-        }
-
-        .archive-toggle:hover { text-decoration: underline; }
-
-        /* Tags */
-        .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.5rem 0; }
-        .tag-cloud .tag {
-            display: inline-block;
-            background: #374151;
-            color: #d1d5db;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            margin: 3px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        body.light .tag-cloud .tag { background: #e5e7eb; color: #374151; }
-        .tag-cloud .tag:hover { background: var(--gold); color: #000; }
-
-        /* Filter buttons */
-        .filter-btn {
-            background: #374151;
-            color: #d1d5db;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s;
-        }
-
-        body.light .filter-btn { background: #e5e7eb; color: #374151; }
-        .filter-btn:hover, .filter-btn.active { background: var(--gold); color: #000; }
-
-        /* Search */
-        #search-input {
-            background: rgba(17, 24, 39, 0.8);
-            border: 1px solid rgba(75, 85, 99, 0.4);
-            color: #fff;
-        }
-
-        body.light #search-input { background: #f3f4f6; border-color: rgba(0,0,0,0.2); color: #1a1a1a; }
-
-        /* Header styles */
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 80px;
-        }
-
-        .site-header .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-        }
-
-        .site-header .logo {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 2px solid var(--gold);
-            object-fit: cover;
-        }
-
-        .site-header .brand-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
-
-        .site-header .main-nav {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .site-header .nav-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        .site-header .nav-link:hover,
-        .site-header .nav-link.active {
-            color: var(--gold);
-        }
-
-        .site-header .nav-cta {
-            padding: 0.6rem 1.25rem;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
-            color: #000 !important;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .site-header .mobile-menu-btn {
-            display: none;
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .site-header .mobile-menu {
-            display: none;
-            background: rgba(10, 10, 10, 0.98);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .site-header .mobile-menu.open {
-            display: block;
-        }
-
-        .site-header .mobile-nav {
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .site-header .mobile-nav-link {
-            padding: 0.75rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            border-radius: 8px;
-        }
-
-        .site-header .mobile-nav-link:hover {
-            color: var(--gold);
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        .site-header .mobile-nav-cta {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
-            color: #000 !important;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .site-header .main-nav {
-                display: none;
-            }
-            .site-header .mobile-menu-btn {
-                display: block;
-            }
-        }
-
-        /* Footer styles */
-        .site-footer {
-            background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 0%, #0a0a0a 100%);
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 4rem 1.5rem 2rem;
-            margin-top: 4rem;
-        }
-
-        .site-footer .footer-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .site-footer .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .site-footer .footer-logo-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid var(--gold);
-        }
-
-        .site-footer .footer-logo-text {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
-
-        .site-footer .footer-description {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .site-footer .footer-title {
-            color: white;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .site-footer .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .site-footer .footer-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .site-footer .footer-link:hover {
-            color: var(--gold);
-        }
-
-        .site-footer .footer-social {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .site-footer .social-link {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .site-footer .social-link:hover {
-            background: var(--gold);
-            color: #000;
-            transform: translateY(-3px);
-        }
-
-        .site-footer .social-link.youtube:hover {
-            background: var(--red);
-            color: white;
-        }
-
-        .site-footer .footer-bottom {
-            max-width: 1400px;
-            margin: 3rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            text-align: center;
-        }
-
-        .site-footer .footer-copyright {
-            color: #666;
-            font-size: 0.85rem;
-        }
-
-        @media (max-width: 1024px) { .sidebar { position: static; } }
-        @media (max-width: 768px) {
-            header { padding: 1rem; flex-direction: column; gap: 1rem; }
-            .header-content { flex-direction: column; }
-        }
-
-        /* ========================
-           NUEVOS ESTILOS REDESIGN
-           ======================== */
-
-        /* Cards híbridas */
-        .article-card {
-            background: linear-gradient(135deg, rgba(31, 31, 31, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .article-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(212, 175, 55, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(212, 175, 55, 0.08);
-        }
-
-        .article-card .card-thumb {
-            position: relative;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-        }
-
-        .article-card .card-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .article-card:hover .card-thumb img {
-            transform: scale(1.08);
-        }
-
-        .article-card .card-badge {
-            position: absolute;
-            bottom: 12px;
-            right: 12px;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .article-card .card-badge.video {
-            background: rgba(0, 0, 0, 0.85);
-            color: var(--gold);
-        }
-
-        .article-card .card-badge.articulo {
-            background: var(--red);
-            color: white;
-        }
-
-        .article-card .card-body {
-            padding: 1.25rem;
-        }
-
-        .article-card .card-title {
-            font-size: 1rem;
-            font-weight: 700;
-            color: white;
-            margin: 0.5rem 0;
-            line-height: 1.4;
-            transition: color 0.3s ease;
-        }
-
-        .article-card:hover .card-title {
-            color: var(--gold);
-        }
-
-        .article-card .card-excerpt {
-            color: #9ca3af;
-            font-size: 0.85rem;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        /* Hero con glow */
-        .hero-glow {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-glow::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150%;
-            height: 300px;
-            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Filter buttons mejorado */
-        .filter-btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid var(--gold);
-            background: transparent;
-            color: var(--gold);
-        }
-
-        .filter-btn:hover {
-            background: rgba(212, 175, 55, 0.15);
-        }
-
-        .filter-btn.active {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
-            color: #000;
-            border: none;
-        }
-
-        /* Play button mejorado */
-        .play-btn {
-            width: 65px;
-            height: 65px;
-            background: rgba(0, 0, 0, 0.85);
-            border: 3px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .play-btn i {
-            color: var(--gold);
-            font-size: 1.3rem;
-            margin-left: 3px;
-        }
-
-        .article-card:hover .play-btn {
-            transform: scale(1.15);
-            background: var(--gold);
-            border-color: var(--gold);
-        }
-
-        .article-card:hover .play-btn i {
-            color: #000;
-        }
-
-        /* Section titles */
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .section-title .icon {
-            color: var(--gold);
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="dark">
-    <!-- Header - Imagen YouTube clicable (más grande) -->
-    <header style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(5,5,5,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08);">
-        <div style="max-width:1400px;margin:0 auto;padding:0.75rem 2rem;display:flex;align-items:center;justify-content:space-between;">
-            <a href="/" style="text-decoration:none;border:none;">
-                <img src="https://yt3.googleusercontent.com/C14_H7WGmrRh41ntN7_ljEOp1bIZfFtUyorii6rfPnk5jj8x1FvkgB4FsNXSJ04g9ca8OuHvSQ=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj" alt="Terapia Liberal" style="height:80px;width:auto;border:none;">
+<body>
+
+    <!-- ============ HEADER ============ -->
+    <header class="site-header" id="site-header">
+        <div class="header-inner">
+            <!-- Logo -->
+            <a href="/" class="logo-link">
+                <img
+                    src="https://yt3.ggpht.com/ZzVyDrXt4x8YWoKbISHZzC9CCtkEPCN4GRET1Xxf_wssNyw7mfN-xTbBmpwEJHO0DRQrg0Dgug=s68-c-k-c0x00ffffff-no-rj"
+                    alt="Terapia Liberal"
+                    class="logo-img"
+                >
+                <span class="logo-text">Terapia Liberal</span>
             </a>
-            <nav style="display:flex;align-items:center;gap:1.5rem;">
-                <a href="#videos" onclick="document.getElementById('videos').scrollIntoView({behavior:'smooth'});return false;" style="color:#9ca3af;text-decoration:none;border:none;font-weight:500;cursor:pointer;">Videos</a>
-                <a href="#articulos" onclick="document.getElementById('articulos').scrollIntoView({behavior:'smooth'});return false;" style="color:#9ca3af;text-decoration:none;border:none;font-weight:500;cursor:pointer;">Artículos</a>
-                <a href="https://www.patreon.com/terapialiberal" target="_blank" style="padding:0.6rem 1.5rem;background:linear-gradient(135deg,#d4af37,#dc2626);color:#000!important;border-radius:8px;font-weight:600;text-decoration:none;border:none;">Apoyar el Proyecto</a>
+
+            <!-- Nav Desktop -->
+            <nav class="main-nav">
+                <a href="#videos" class="nav-link" onclick="scrollToSection('videos');return false;">Videos</a>
+                <a href="#articulos" class="nav-link" onclick="scrollToSection('articulos');return false;">Artículos</a>
+                <a href="#newsletter" class="nav-link" onclick="scrollToSection('newsletter');return false;">Newsletter</a>
+                <a href="https://www.patreon.com/terapialiberal" target="_blank" rel="noopener noreferrer" class="nav-cta">
+                    <i class="fab fa-patreon mr-1"></i> Apoyar
+                </a>
+            </nav>
+
+            <!-- Social + Mobile btn -->
+            <div style="display:flex;align-items:center;gap:1rem;">
+                <a href="https://www.youtube.com/@terapialiberal" target="_blank" rel="noopener noreferrer"
+                   class="nav-link" style="font-size:1.1rem;" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://x.com/terapia_liberal" target="_blank" rel="noopener noreferrer"
+                   class="nav-link" style="font-size:1.1rem;" aria-label="Twitter/X">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <nav class="mobile-nav">
+                <a href="#videos" class="mobile-nav-link" onclick="scrollToSection('videos');closeMobileMenu();">Videos</a>
+                <a href="#articulos" class="mobile-nav-link" onclick="scrollToSection('articulos');closeMobileMenu();">Artículos</a>
+                <a href="#newsletter" class="mobile-nav-link" onclick="scrollToSection('newsletter');closeMobileMenu();">Newsletter</a>
+                <a href="https://www.patreon.com/terapialiberal" target="_blank" rel="noopener noreferrer" class="mobile-nav-link mobile-nav-cta">
+                    <i class="fab fa-patreon mr-2"></i>Apoyar el Proyecto
+                </a>
             </nav>
         </div>
     </header>
 
-    <!-- Main -->
-    <main class="max-w-7xl mx-auto px-4 py-10" style="padding-top: 110px;">
-        <!-- Hero -->
-        <section class="section-bg rounded-2xl py-14 px-8 mb-10 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 gold-text">Biblioteca de Investigaciones</h2>
-            <p class="text-gray-300 max-w-3xl mx-auto text-lg">Análisis independientes sobre economía, geopolítica y filosofía liberal. Investigaciones profundas que conectan los eventos globales con las agendas ocultas del poder.</p>
+    <!-- ============ MAIN ============ -->
+    <main>
+
+        <!-- HERO -->
+        <section class="hero-section">
+            <div style="max-width:900px;margin:0 auto;position:relative;z-index:1;">
+                <p style="color:var(--gold);font-size:0.85rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;">
+                    Análisis Independiente
+                </p>
+                <h1 class="hero-title">
+                    <span class="highlight">Terapia</span> Liberal
+                </h1>
+                <p class="hero-subtitle">
+                    Investigaciones profundas sobre economía, geopolítica y filosofía liberal.<br>
+                    Conectando los eventos globales con las agendas del poder.
+                </p>
+                <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:2.5rem;">
+                    <a href="#videos" onclick="scrollToSection('videos');return false;" class="nav-cta" style="font-size:1rem;padding:0.85rem 2rem;">
+                        <i class="fas fa-play mr-2"></i>Ver Videos
+                    </a>
+                    <a href="#articulos" onclick="scrollToSection('articulos');return false;"
+                       style="font-size:1rem;padding:0.85rem 2rem;border-radius:8px;border:1px solid var(--border-gold);color:var(--gold);font-weight:600;transition:all 0.3s;text-decoration:none;">
+                        Leer Artículos
+                    </a>
+                </div>
+            </div>
         </section>
 
-        <!-- Layout -->
-        <div class="flex flex-col lg:flex-row gap-8">
-            <!-- Contenido Principal -->
-            <div class="lg:w-3/4">
-                <!-- Filtro Tipo -->
-                <div class="flex gap-3 mb-6" id="tipo-filtro">
-                    <section id="videos"></section>
-                    <button onclick="filterByTipo('all')" class="filter-btn active" data-tipo="all">Todos</button>
-                    <button onclick="filterByTipo('video')" class="filter-btn" data-tipo="video">Videos</button>
-                    <button onclick="filterByTipo('articulo')" class="filter-btn" data-tipo="articulo">Artículos</button>
+        <!-- FEATURED -->
+        <section class="featured-section" id="videos">
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;">
+                <span style="width:4px;height:28px;background:linear-gradient(180deg,var(--gold),var(--red));border-radius:2px;display:inline-block;"></span>
+                <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--text-white);margin:0;">
+                    ⭐ Análisis Destacado
+                </h2>
+            </div>
+            <div class="featured-card" id="featured-container">
+                <!-- Skeleton -->
+                <div class="featured-thumb" style="background:#111;min-height:280px;display:flex;align-items:center;justify-content:center;">
+                    <i class="fas fa-spinner fa-spin" style="color:var(--gold);font-size:2rem;"></i>
                 </div>
+                <div class="featured-body">
+                    <div style="height:20px;background:#1f1f1f;border-radius:4px;width:100px;margin-bottom:1rem;"></div>
+                    <div style="height:32px;background:#1f1f1f;border-radius:4px;width:90%;margin-bottom:0.75rem;"></div>
+                    <div style="height:32px;background:#1f1f1f;border-radius:4px;width:70%;margin-bottom:1.5rem;"></div>
+                    <div style="height:16px;background:#1f1f1f;border-radius:4px;width:100%;margin-bottom:0.5rem;"></div>
+                    <div style="height:16px;background:#1f1f1f;border-radius:4px;width:80%;"></div>
+                </div>
+            </div>
+        </section>
 
-                <!-- Destacado - MÁS GRANDE -->
-                <section class="mb-10">
-                    <h3 class="text-2xl font-semibold mb-4 gold-text">⭐ Análisis Destacado</h3>
-                    <div id="featured-container" class="section-bg rounded-2xl p-8">
-                        <!-- Skeleton loader -->
-                        <div class="animate-pulse">
-                            <div class="flex flex-col md:flex-row gap-8">
-                                <div class="md:w-1/2">
-                                    <div class="bg-gray-800 rounded-xl h-64"></div>
-                                </div>
-                                <div class="md:w-1/2">
-                                    <div class="h-4 bg-gray-800 rounded w-20 mb-4"></div>
-                                    <div class="h-8 bg-gray-800 rounded w-full mb-2"></div>
-                                    <div class="h-8 bg-gray-800 rounded w-3/4 mb-4"></div>
-                                    <div class="h-4 bg-gray-800 rounded w-full mb-2"></div>
-                                    <div class="h-4 bg-gray-800 rounded w-5/6"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+        <!-- FILTERS + GRID -->
+        <section style="max-width:1400px;margin:0 auto;padding:0 2rem 4rem;" id="articulos">
 
-                <!-- Grilla - Todos los artículos -->
-                <section class="mb-10" id="articulos">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-2xl font-semibold gold-text" id="grilla-titulo">Todos los Análisis</h3>
-                        <span id="article-count" class="text-gray-400 text-sm"></span>
-                    </div>
-                    <div id="grid-container" class="grid md:grid-cols-2 lg:grid-cols-2 gap-6"></div>
-                    <div class="text-center mt-8">
-                        <button id="load-more-btn" class="btn-gradient hidden" onclick="loadMore()">
-                            <i class="fas fa-plus mr-2"></i>Cargar más antiguos
+            <!-- Filtros -->
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:2rem;">
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <span style="width:4px;height:28px;background:linear-gradient(180deg,var(--gold),var(--red));border-radius:2px;display:inline-block;"></span>
+                    <h2 id="grilla-titulo" style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--text-white);margin:0;">
+                        Todos los Análisis
+                    </h2>
+                    <span id="article-count" style="color:var(--text-muted);font-size:0.85rem;"></span>
+                </div>
+                <div class="filter-container" style="margin:0;gap:0.5rem;">
+                    <button class="filter-btn active" data-tipo="all" onclick="filterByTipo('all')">
+                        <i class="fas fa-th-large mr-1"></i>Todos
+                    </button>
+                    <button class="filter-btn" data-tipo="video" onclick="filterByTipo('video')">
+                        <i class="fab fa-youtube mr-1"></i>Videos
+                    </button>
+                    <button class="filter-btn" data-tipo="articulo" onclick="filterByTipo('articulo')">
+                        <i class="fas fa-file-alt mr-1"></i>Artículos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Layout: Grid + Sidebar -->
+            <div style="display:grid;grid-template-columns:1fr 320px;gap:2.5rem;align-items:start;" id="main-layout">
+
+                <!-- Content Grid -->
+                <div>
+                    <div class="content-grid" id="grid-container" style="padding:0;"></div>
+                    <div style="text-align:center;margin-top:2rem;">
+                        <button id="load-more-btn" class="nav-cta" style="display:none;font-size:0.95rem;padding:0.85rem 2rem;cursor:pointer;border:none;" onclick="loadMore()">
+                            <i class="fas fa-plus mr-2"></i>Cargar más
                         </button>
                     </div>
-                </section>
-            </div>
+                </div>
 
-            <!-- Sidebar -->
-            <aside class="lg:w-1/4">
-                <div class="sidebar space-y-6" style="position:sticky;top:100px;display:flex;flex-direction:column;gap:1.5rem;">
-                    <!-- Newsletter -->
-                    <div class="section-bg rounded-2xl p-6" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px);">
-                        <h4 class="text-lg font-bold mb-3 gold-text"><i class="fas fa-envelope mr-2"></i>Newsletter</h4>
-                        <p class="text-gray-400 text-sm mb-4">Recibí análisis nuevos cada semana.</p>
-                        <form name="newsletter" method="POST" data-netlify="true" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
-                            <input type="hidden" name="form-name" value="newsletter">
-                            <input type="email" name="email" placeholder="tu@email.com" class="newsletter-input" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#e5e7eb;padding:12px 16px;border-radius:8px;width:100%;margin-bottom:12px;" required>
-                            <button type="submit" class="btn-gradient w-full" style="background:linear-gradient(135deg,#d4af37,#dc2626);color:#000;padding:12px 20px;border-radius:8px;font-weight:600;width:100%;cursor:pointer;border:none;">Suscribirse</button>
-                        </form>
-                    </div>
+                <!-- Sidebar -->
+                <aside style="position:sticky;top:100px;display:flex;flex-direction:column;gap:1.5rem;">
 
                     <!-- Buscador -->
-                    <div class="section-bg rounded-2xl p-6" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px);">
-                        <h4 class="text-lg font-bold mb-3 gold-text"><i class="fas fa-search mr-2"></i>Buscar</h4>
-                        <input type="text" id="search-input" placeholder="Buscar..." style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#e5e7eb;padding:12px 16px;border-radius:8px;width:100%;" oninput="searchArticles(this.value)">
-                    </div>
-
-                    <!-- Nube de Etiquetas -->
-                    <div class="section-bg rounded-2xl p-6" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px);">
-                        <h4 class="text-lg font-bold mb-3 gold-text"><i class="fas fa-tags mr-2"></i>Etiquetas</h4>
-                        <div class="tag-cloud" id="tags-cloud" style="display:flex;flex-wrap:wrap;gap:0.5rem;"></div>
-                    </div>
-
-                    <!-- Archivo con desplegable -->
-                    <div class="section-bg rounded-2xl p-6" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px);">
-                        <h4 class="text-lg font-bold mb-3 gold-text"><i class="fas fa-archive mr-2"></i>Archivo</h4>
-                        <div class="archive-list" id="archive-list" style="max-height:300px;overflow-y:auto;"></div>
-                        <span class="archive-toggle" id="archive-toggle" onclick="toggleArchive()" style="display:block;color:#d4af37;cursor:pointer;font-size:0.85rem;margin-top:10px;">Ver más ▼</span>
-                    </div>
-
-                    <!-- Sobre el Autor - MÁS DETALLADO -->
-                    <div class="section-bg rounded-2xl p-6" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px);">
-                        <h4 class="text-lg font-bold mb-3 gold-text"><i class="fas fa-user mr-2"></i>Sobre el Autor</h4>
-                        <div class="text-center mb-4">
-                            <img src="https://i.postimg.cc/8C3ZkxNy/1660176107980.jpg" alt="Nicolás" class="w-24 h-24 rounded-full mx-auto object-cover mb-3">
-                            <h5 class="font-bold text-lg">Nicolás Martínez Lage</h5>
-                            <p class="text-gold text-sm font-medium">Analista Independiente</p>
+                    <div class="sidebar">
+                        <div class="section-bg" style="padding:1.5rem;">
+                            <h4 style="color:var(--gold);font-weight:700;margin-bottom:1rem;font-size:1rem;">
+                                <i class="fas fa-search mr-2"></i>Buscar
+                            </h4>
+                            <input
+                                type="text"
+                                id="search-input"
+                                placeholder="Buscar análisis..."
+                                class="newsletter-input"
+                                oninput="searchArticles(this.value)"
+                            >
                         </div>
-                        <p class="text-gray-400 text-sm mb-3">Creador de Terapia Liberal, plataforma de análisis que conecta eventos económicos y geopolíticos globales con las agendas de poder.</p>
-                        <p class="text-gray-400 text-sm">Especializado en revelar las estructuras y mecanismos del control financiero mundial más allá de la narrativa mainstream.</p>
                     </div>
-                </div>
-            </aside>
-        </div>
+
+                    <!-- Newsletter -->
+                    <div class="sidebar" id="newsletter">
+                        <div class="section-bg" style="padding:1.5rem;">
+                            <h4 style="color:var(--gold);font-weight:700;margin-bottom:0.5rem;font-size:1rem;">
+                                <i class="fas fa-envelope mr-2"></i>Newsletter
+                            </h4>
+                            <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1rem;">
+                                Recibí análisis nuevos cada semana.
+                            </p>
+                            <form name="newsletter" method="POST" data-netlify="true" onsubmit="handleNewsletter(event)">
+                                <input type="hidden" name="form-name" value="newsletter">
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="tu@email.com"
+                                    class="newsletter-input"
+                                    required
+                                >
+                                <button type="submit" class="nav-cta" style="width:100%;text-align:center;cursor:pointer;border:none;padding:0.75rem;font-size:0.9rem;">
+                                    Suscribirse
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Etiquetas -->
+                    <div class="sidebar">
+                        <div class="section-bg" style="padding:1.5rem;">
+                            <h4 style="color:var(--gold);font-weight:700;margin-bottom:1rem;font-size:1rem;">
+                                <i class="fas fa-tags mr-2"></i>Etiquetas
+                            </h4>
+                            <div id="tags-cloud" style="display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Archivo -->
+                    <div class="sidebar">
+                        <div class="section-bg" style="padding:1.5rem;">
+                            <h4 style="color:var(--gold);font-weight:700;margin-bottom:1rem;font-size:1rem;">
+                                <i class="fas fa-archive mr-2"></i>Archivo
+                            </h4>
+                            <div id="archive-list" style="max-height:280px;overflow-y:auto;"></div>
+                            <button id="archive-toggle" onclick="toggleArchive()" style="display:none;color:var(--gold);background:none;border:none;cursor:pointer;font-size:0.85rem;margin-top:0.75rem;padding:0;">
+                                Ver más ▼
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Sobre el Autor -->
+                    <div class="sidebar">
+                        <div class="section-bg" style="padding:1.5rem;text-align:center;">
+                            <h4 style="color:var(--gold);font-weight:700;margin-bottom:1rem;font-size:1rem;">
+                                <i class="fas fa-user mr-2"></i>Sobre el Autor
+                            </h4>
+                            <img
+                                src="https://i.postimg.cc/8C3ZkxNy/1660176107980.jpg"
+                                alt="Nicolás Martínez Lage"
+                                style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);margin:0 auto 0.75rem;"
+                            >
+                            <h5 style="color:var(--text-white);font-weight:700;margin-bottom:0.25rem;">Nicolás Martínez Lage</h5>
+                            <p style="color:var(--gold);font-size:0.8rem;font-weight:600;margin-bottom:0.75rem;">Analista Independiente</p>
+                            <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.6;margin:0;">
+                                Creador de Terapia Liberal. Especializado en revelar las estructuras del control financiero mundial.
+                            </p>
+                        </div>
+                    </div>
+
+                </aside>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer -->
+    <!-- ============ FOOTER ============ -->
     <footer class="site-footer">
         <div class="footer-grid">
-            <div class="footer-brand">
+            <!-- Brand -->
+            <div>
                 <div class="footer-logo">
-                    <img src="https://yt3.ggpht.com/ZzVyDrXt4x8YWoKbISHZzC9CCtkEPCN4GRET1Xxf_wssNyw7mfN-xTbBmpwEJHO0DRQrg0Dgug=s68-c-k-c0x00ffffff-no-rj" alt="Terapia Liberal" class="footer-logo-img">
+                    <img
+                        src="https://yt3.ggpht.com/ZzVyDrXt4x8YWoKbISHZzC9CCtkEPCN4GRET1Xxf_wssNyw7mfN-xTbBmpwEJHO0DRQrg0Dgug=s68-c-k-c0x00ffffff-no-rj"
+                        alt="Terapia Liberal"
+                        class="footer-logo-img"
+                    >
                     <span class="footer-logo-text">Terapia Liberal</span>
                 </div>
-                <p class="footer-description">Análisis independiente para mentes críticas. Geopolítica, economía y filosofía liberal sin filtros.</p>
-            </div>
-            <div class="footer-nav">
-                <h4 class="footer-title">Navegación</h4>
-                <nav class="footer-links" style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
-                    <a href="/" class="footer-link">Inicio</a>
-                    <a href="#videos" onclick="document.getElementById('videos').scrollIntoView({behavior:'smooth'});return false;" class="footer-link">Videos</a>
-                    <a href="#articulos" onclick="document.getElementById('articulos').scrollIntoView({behavior:'smooth'});return false;" class="footer-link">Artículos</a>
-                </nav>
-            </div>
-            <div class="footer-social-section">
-                <h4 class="footer-title">Síguenos</h4>
-                <div class="footer-social">
-                    <a href="https://www.youtube.com/@terapialiberal" target="_blank" class="social-link youtube" title="YouTube">
+                <p class="footer-description">
+                    Análisis independiente para mentes críticas. Geopolítica, economía y filosofía liberal sin filtros.
+                </p>
+                <div class="footer-social" style="margin-top:1.25rem;">
+                    <a href="https://www.youtube.com/@terapialiberal" target="_blank" rel="noopener noreferrer" class="social-link youtube" aria-label="YouTube">
                         <i class="fab fa-youtube"></i>
                     </a>
-                    <a href="https://x.com/terapia_liberal" target="_blank" class="social-link" title="X / Twitter">
+                    <a href="https://x.com/terapia_liberal" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter/X">
                         <i class="fab fa-x-twitter"></i>
                     </a>
-                    <a href="https://www.patreon.com/terapialiberal" target="_blank" class="social-link" title="Patreon">
+                    <a href="https://www.patreon.com/terapialiberal" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Patreon">
                         <i class="fab fa-patreon"></i>
                     </a>
                 </div>
             </div>
+
+            <!-- Navegación -->
+            <div>
+                <h4 class="footer-title">Navegación</h4>
+                <nav class="footer-links">
+                    <a href="/" class="footer-link">Inicio</a>
+                    <a href="#videos" class="footer-link" onclick="scrollToSection('videos');return false;">Videos</a>
+                    <a href="#articulos" class="footer-link" onclick="scrollToSection('articulos');return false;">Artículos</a>
+                    <a href="#newsletter" class="footer-link" onclick="scrollToSection('newsletter');return false;">Newsletter</a>
+                </nav>
+            </div>
+
+            <!-- Legal -->
+            <div>
+                <h4 class="footer-title">Más</h4>
+                <nav class="footer-links">
+                    <a href="https://www.youtube.com/@terapialiberal" target="_blank" rel="noopener noreferrer" class="footer-link">Canal YouTube</a>
+                    <a href="https://www.patreon.com/terapialiberal" target="_blank" rel="noopener noreferrer" class="footer-link">Patreon</a>
+                    <a href="/admin" class="footer-link">Admin CMS</a>
+                </nav>
+            </div>
         </div>
+
         <div class="footer-bottom">
             <p class="footer-copyright">© 2026 Terapia Liberal. Análisis independiente para mentes críticas.</p>
         </div>
     </footer>
 
-    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+    <!-- Back to Top -->
+    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
+    <!-- ============ SCRIPTS ============ -->
     <script>
-        // Theme toggle
-        function toggleTheme() {
-            const body = document.body;
-            const icon = document.querySelector('.theme-toggle i');
-
-            if (body.classList.contains('dark')) {
-                body.classList.remove('dark');
-                body.classList.add('light');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.classList.remove('light');
-                body.classList.add('dark');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                localStorage.setItem('theme', 'dark');
-            }
+        // ── Helpers ──────────────────────────────────────────────
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Cargar tema guardado
-        (function() {
-            const saved = localStorage.getItem('theme');
-            if (saved === 'light') {
-                document.body.classList.add('light');
-                document.body.classList.remove('dark');
-                document.querySelector('.theme-toggle i').classList.remove('fa-moon');
-                document.querySelector('.theme-toggle i').classList.add('fa-sun');
-            }
-        })();
+        function closeMobileMenu() {
+            document.getElementById('mobile-menu')?.classList.remove('open');
+        }
 
-        // Variables globales
-        let allArticles = [];
-        let filteredArticles = [];
-        let displayedCount = 6; // Mostrar 6 artículos inicialmente
-        const PER_PAGE = 6; // Cargar 6 más al hacer click
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+            document.getElementById('mobile-menu')?.classList.toggle('open');
+        });
 
         // Back to top
         window.addEventListener('scroll', () => {
-            document.getElementById('backToTop').classList.toggle('show', window.pageYOffset > 300);
+            document.getElementById('backToTop').classList.toggle('show', window.pageYOffset > 400);
         });
 
-        // Inicializar
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('site-header')?.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Newsletter
+        function handleNewsletter(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type=submit]');
+            btn.textContent = '¡Gracias! ✓';
+            btn.style.background = '#16a34a';
+            setTimeout(() => {
+                btn.textContent = 'Suscribirse';
+                btn.style.background = '';
+                e.target.reset();
+            }, 3000);
+        }
+
+        // ── Data & State ─────────────────────────────────────────
+        let allArticles = [];
+        let filteredArticles = [];
+        let displayedCount = 6;
+        const PER_PAGE = 6;
+        let currentTipo = 'all';
+        let archiveExpanded = false;
+
+        // ── Init ─────────────────────────────────────────────────
         document.addEventListener('DOMContentLoaded', () => {
-            // Mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('open');
+            fetch('data/articles.json')
+                .then(r => r.json())
+                .then(data => init(data))
+                .catch(() => {
+                    // Fallback inline data
+                    init([
+                        { title: "La Teoría del Rimland y el Nuevo Orden Mundial", description: "Análisis sobre la teoría geopolítica de Nicholas Spykman, el Rimland y la arquitectura del poder contemporáneo.", url: "articles/terapia-liberal-rimland-nuevo-orden-mundial.html", fecha: "07/02/2026", video_id: "9AMPffjQREY", tipo: "video", tags: ["geopolítica", "eeuu", "eurasia", "spykman"] },
+                        { title: "GAZA S.A. y VENEZUELA INC.: Así Operan los Arquitectos de la WW3", description: "Investigación sobre cómo Jared Kushner, Tony Blair y megainversores globales transforman conflictos en oportunidades de negocio.", url: "articles/gaza-venezuela-arquitectos-ww3.html", fecha: "08/01/2026", video_id: "9wl8kjn7pV0", tipo: "video", tags: ["geopolítica", "medio oriente", "kushner", "ucrania"] },
+                        { title: "Jeffrey: NADA ES LO QUE PARECE", description: "Jeffrey Epstein no era un criminal aislado sino el fixer estratégico de una red global.", url: "articles/jeffrey.html", fecha: "06/12/2025", video_id: "5Kx0Acdv0qw", tipo: "video", tags: ["élites", "wall street", "epstein", "inteligencia"] },
+                        { title: "La Matrix del Poder: Quiénes Son los Verdaderos Dueños del Planeta", description: "Las 147 corporaciones que controlan el 40% de la riqueza global.", url: "articles/la-matrix-del-poder.html", fecha: "13/11/2025", video_id: "wsVwjy3z0KE", tipo: "video", tags: ["élites", "oligarquía", "reino unido", "rothschild"] },
+                        { title: "El MUNDO se FRACTURA: La Batalla por los Recursos Tecnológicos", description: "La guerra económica por minerales críticos y semiconductores.", url: "articles/el-mundo-se-fractura-recursos-tecnologicos.html", fecha: "07/11/2025", video_id: "mQX6Ef5QwMk", tipo: "video", tags: ["economía", "china", "tecnología"] },
+                        { title: "Cometa 3I/ATLAS: ¿Ritual de Élites o Amenaza Real?", description: "Investigación sobre las conexiones entre el cometa ATLAS, Peter Thiel y Palantir.", url: "articles/cometa_atlas_ritual_elites_analisis.html", fecha: "29/10/2025", video_id: "0KJOpBufUc4", tipo: "video", tags: ["tecnología", "espacio", "thiel", "palantir"] },
+                        { title: "El Gran Reseteo de la Deuda Mundial", description: "Análisis de la crisis de deuda global y el Great Reset.", url: "articles/analisis_great_reset_deuda_mundial.html", fecha: "24/10/2025", video_id: "a9gcaF--yfk", tipo: "video", tags: ["economía", "deuda", "great reset"] },
+                        { title: "El Asesinato de Charlie Kirk", description: "Análisis profundo del fracturamiento del discurso político estadounidense.", url: "articles/analisis_charlie_kirk_2025.html", fecha: "24/10/2025", video_id: "GMTSm7ycs8E", tipo: "video", tags: ["política", "eeuu", "media"] },
+                        { title: "La Lucha por la Supremacía de la IA", description: "Cómo la carrera por la inteligencia artificial redefine el poder global.", url: "articles/analisis_supremacia_ia_geopolitica.html", fecha: "15/10/2025", video_id: "-n6Ms6E2tGg", tipo: "video", tags: ["tecnología", "ia", "china"] },
+                        { title: "Caos Programado: El Camino hacia una Crisis Total", description: "Análisis del plan tecnocrático detrás del caos aparente en Estados Unidos.", url: "articles/caos-programado-crisis-total.html", fecha: "10/10/2025", video_id: "ZeZN8skPVZg", tipo: "video", tags: ["tecnocracia", "eeuu", "thiel"] },
+                        { title: "El Avance de la Tecnocracia Digital", description: "El sistema de identificación digital obligatorio y la vigilancia global.", url: "articles/analisis_tecnocracia_digital.html", fecha: "08/10/2025", video_id: "LqkHZWvALJ8", tipo: "video", tags: ["tecnocracia", "vigilancia"] },
+                        { title: "Wall Street Advierte: 'Primero un Gran Repunte, Luego un Crash'", description: "Las advertencias y el paralelismo histórico con 1929.", url: "articles/wall-street-repunte-crash-analisis.html", fecha: "03/10/2025", video_id: "k40I-u2gi50", tipo: "video", tags: ["economía", "wall street", "crash"] },
+                        { title: "La División del Mundo en Bloques", description: "La división del mundo en bloques económicos y la reestructuración de la gobernanza mundial.", url: "articles/divideyconquista.html", fecha: "01/10/2025", video_id: "3nfqpb2RLNU", tipo: "video", tags: ["geopolítica", "bloques", "china"] },
+                        { title: "El Cuarto Giro: Ciclos Históricos y Crisis Institucional", description: "Análisis de la teoría del Cuarto Giro de Strauss-Howe aplicada al contexto actual.", url: "articles/cuarto-giro.html", fecha: "31/08/2025", video_id: "Bx6zBh7gunI", tipo: "video", tags: ["historia", "ciclos", "crisis"] },
+                        { title: "Trump Activa Poderes de Emergencia: COG y Proyecto 2025", description: "Análisis sobre la activación de poderes presidenciales extraordinarios.", url: "articles/trump-poderes-emergencia-cog-proyecto-2025.html", fecha: "20/08/2025", video_id: "hjuWL_z9Vh0", tipo: "video", tags: ["política", "trump", "cog"] },
+                        { title: "El Gran Tablero Mundial: La Profecía de Brzezinski", description: "Análisis definitivo de la visión geopolítica de Zbigniew Brzezinski.", url: "articles/zbig.html", fecha: "18/08/2025", video_id: "QTDXeE8bey0", tipo: "video", tags: ["geopolítica", "brzezinski", "eurasia"] },
+                        { title: "LOS DUEÑOS DE MAGA y el FUTURO", description: "Investigación sobre los dueños de MAGA y las proyecciones futuras.", url: "articles/dueños-maga.html", fecha: "07/08/2025", video_id: "-wntkT1oDS4", tipo: "video", tags: ["política", "maga", "trump"] },
+                        { title: "TRUMP ES el Caballo de Troya Tecnocrático", description: "La verdadera naturaleza del movimiento Trump.", url: "articles/trump-cbdc.html", fecha: "24/07/2025", video_id: "UEgEIzZ9dYo", tipo: "video", tags: ["economía", "cbdc", "trump"] },
+                        { title: "El Gran Tablero Geopolítico - Brzezinski marca el Rumbo", description: "La estrategia geopolítica de Zbigniew Brzezinski y su influencia en el orden mundial actual.", url: "articles/el-gran-tablero.html", fecha: "05/07/2025", video_id: "QTDXeE8bey0", tipo: "video", tags: ["geopolítica", "brzezinski", "china"] },
+                        { title: "Los Ganadores del Nuevo Complejo Militar TECNOLÓGICO", description: "El entramado entre Silicon Valley, Wall Street y el complejo militar global.", url: "articles/nuevo-complejo-militar.html", fecha: "29/06/2025", video_id: "k3mX98Xo_qc", tipo: "video", tags: ["militar", "tecnología", "blackrock"] },
+                        { title: "El Segundo Borrador del Orden Mundial", description: "Rediseño del orden financiero global, geopolítica, CBDC y nueva arquitectura del poder.", url: "articles/seunda-globalizacion.html", fecha: "25/06/2025", video_id: "zYV-hGwE-RQ", tipo: "video", tags: ["geopolítica", "orden mundial", "cbdc"] },
+                        { title: "Epstein Inmersivo: La Red Global de Control", description: "Análisis profundo de la red de control global vinculada a Jeffrey Epstein.", url: "articles/epsteininmersivo.html", fecha: "15/06/2025", video_id: "5Kx0Acdv0qw", tipo: "video", tags: ["élites", "epstein", "maxwell"] }
+                    ]);
                 });
-            }
-
-            // Fallback con URLs correctas de Jekyll (permalink: /articles/:slug/)
-            const fallback = [
-                { title: "Esto es una Prueba", description: "Esto es una prueba de pfpoafnjpaf", url: "/articles/esto-es-una-prueba/", fecha: "26/02/2026", video_id: "", tipo: "articulo", tags: [], image: "https://www.reuters.com/resizer/v2/IRUVK6XD7NJ7PIYMDFJFUWVUQ4.jpg?auth=42d39ba231e2e1d4850a4ba5eb3cfd0d8d86a76b0d01564ef7292e228986c503&width=960&quality=80" },
-                { title: "GAZA S.A. y VENEZUELA INC.: Así Operan los Arquitectos de la WW3", description: "Investigación sobre cómo Jared Kushner, Tony Blair y megainversores globales transforman conflictos en oportunidades de negocio.", url: "/articles/gaza-venezuela/", fecha: "08/01/2026", video_id: "9wl8kjn7pV0", tipo: "video", tags: ["geopolítica", "medio oriente", "kushner", "ucrania"], image: "https://img.youtube.com/vi/9wl8kjn7pV0/maxresdefault.jpg" },
-                { title: "Jeffrey: NADA ES LO QUE PARECE - Análisis de la Red Global de Control", description: "Jeffrey Epstein no era un criminal aislado sino el fixer estratégico de una red global.", url: "/articles/jeffrey/", fecha: "06/12/2025", video_id: "5Kx0Acdv0qw", tipo: "video", tags: ["élites", "wall street", "epstein", "inteligencia"], image: "https://img.youtube.com/vi/5Kx0Acdv0qw/maxresdefault.jpg" },
-                { title: "La Matrix del Poder: Quiénes Son los Verdaderos Dueños del Planeta", description: "Dominic Cummings reveló que el gobierno británico es 'teatro guionado'. Las 147 corporaciones que controlan el 40% de la riqueza global.", url: "/articles/la-matrix-del-poder/", fecha: "13/11/2025", video_id: "wsVwjy3z0KE", tipo: "video", tags: ["élites", "oligarquía", "reino Unido", "rothschild"], image: "https://img.youtube.com/vi/wsVwjy3z0KE/maxresdefault.jpg" },
-                { title: "El MUNDO se FRACTURA: La Batalla por los Recursos Tecnológicos", description: "La guerra económica por minerales críticos y semiconductores que redibuja el mapa del poder mundial.", url: "/articles/el-mundo-se-fractura-recursos-tecnologicos/", fecha: "07/11/2025", video_id: "mQX6Ef5QwMk", tipo: "video", tags: ["economía", "china", "tecnología", "semicondutores"], image: "https://img.youtube.com/vi/mQX6Ef5QwMk/maxresdefault.jpg" },
-                { title: "Cometa 3I/ATLAS: ¿Ritual de Élites o Amenaza Real?", description: "Investigación sobre las conexiones entre el cometa ATLAS, Peter Thiel y Palantir.", url: "/articles/cometa_atlas_ritual_elites_analisis/", fecha: "29/10/2025", video_id: "0KJOpBufUc4", tipo: "video", tags: ["tecnología", "espacio", "thiel", "palantir"], image: "https://img.youtube.com/vi/0KJOpBufUc4/maxresdefault.jpg" },
-                { title: "El Gran Reseteo de la Deuda Mundial", description: "Análisis de la crisis de deuda global y el Great Reset.", url: "/articles/analisis_great_reset_deuda_mundial/", fecha: "24/10/2025", video_id: "a9gcaF--yfk", tipo: "video", tags: ["economía", "deuda", "great reset", "wto"], image: "https://img.youtube.com/vi/a9gcaF--yfk/maxresdefault.jpg" },
-                { title: "El Asesinato de Charlie Kirk", description: "Análisis profundo del asesinato de Charlie Kirk y el fracturamiento del discurso político estadounidense.", url: "/articles/analisis_charlie_kirk_2025/", fecha: "24/10/2025", video_id: "GMTSm7ycs8E", tipo: "video", tags: ["política", "eeuu", "media", "psicología"], image: "https://img.youtube.com/vi/GMTSm7ycs8E/maxresdefault.jpg" },
-                { title: "La Lucha por la Supremacía de la IA", description: "Cómo la carrera por la inteligencia artificial redefine el poder global.", url: "/articles/analisis_supremacia_ia_geopolitica/", fecha: "15/10/2025", video_id: "-n6Ms6E2tGg", tipo: "video", tags: ["tecnología", "ia", "china", "jpmorgan"], image: "https://img.youtube.com/vi/-n6Ms6E2tGg/maxresdefault.jpg" },
-                { title: "Caos Programado: El Camino hacia una Crisis Total", description: "Análisis del plan tecnocrático detrás del caos aparente en Estados Unidos.", url: "/articles/caos-programado-crisis-total/", fecha: "10/10/2025", video_id: "ZeZN8skPVZg", tipo: "video", tags: ["tecnocracia", "eeuu", "thiel", "gladio"], image: "https://img.youtube.com/vi/ZeZN8skPVZg/maxresdefault.jpg" },
-                { title: "El Avance de la Tecnocracia Digital", description: "El sistema de identificación digital obligatorio y la vigilancia global.", url: "/articles/analisis_tecnocracia_digital/", fecha: "08/10/2025", video_id: "LqkHZWvALJ8", tipo: "video", tags: ["tecnocracia", "vigilancia", "id digital", "starmer"], image: "https://img.youtube.com/vi/LqkHZWvALJ8/maxresdefault.jpg" },
-                { title: "Wall Street Advierte: 'Primero un Gran Repunte, Luego un Crash'", description: "Las advertencias y el paralelismo histórico con 1929.", url: "/articles/wall-street-repunte-crash-analisis/", fecha: "03/10/2025", video_id: "k40I-u2gi50", tipo: "video", tags: ["economía", "wall street", "crash", "1929"], image: "https://img.youtube.com/vi/k40I-u2gi50/maxresdefault.jpg" },
-                { title: "La División del Mundo en Bloques", description: "La división del mundo en bloques económicos y la reestructuración de la gobernanza mundial.", url: "/articles/divide-y-conquista/", fecha: "01/10/2025", video_id: "3nfqpb2RLNU", tipo: "video", tags: ["geopolítica", "bloques", "china", "trump"], image: "https://img.youtube.com/vi/3nfqpb2RLNU/maxresdefault.jpg" },
-                { title: "El Cuarto Giro: Ciclos Históricos y Crisis Institucional", description: "Análisis de la teoría del Cuarto Giro de Strauss-Howe aplicada al contexto actual.", url: "/articles/cuarto-giro/", fecha: "31/08/2025", video_id: "Bx6zBh7gunI", tipo: "video", tags: ["historia", "ciclos", "crisis", "institucional"], image: "https://img.youtube.com/vi/Bx6zBh7gunI/maxresdefault.jpg" },
-                { title: "Trump Activa Poderes de Emergencia: COG y Proyecto 2025", description: "Análisis sobre la activación de poderes presidenciales extraordinarios y la militarización de Washington DC.", url: "/articles/trump-poderes-emergencia-cog-proyecto-2025/", fecha: "20/08/2025", video_id: "hjuWL_z9Vh0", tipo: "video", tags: ["política", "trump", "cog", "washington"], image: "https://img.youtube.com/vi/hjuWL_z9Vh0/hqdefault.jpg" },
-                { title: "El Gran Tablero Mundial: La Profecía de Brzezinski", description: "Análisis definitivo de la visión geopolítica de Zbigniew Brzezinski y su impacto en el orden mundial.", url: "/articles/zbig/", fecha: "18/08/2025", video_id: "QTDXeE8bey0", tipo: "video", tags: ["geopolítica", "brzezinski", "europa", "eurasia"], image: "https://img.youtube.com/vi/QTDXeE8bey0/maxresdefault.jpg" },
-                { title: "LOS DUEÑOS DE MAGA y el FUTURO", description: "Investigación sobre los dueños de MAGA y las proyecciones futuras.", url: "/articles/duenos-maga/", fecha: "07/08/2025", video_id: "-wntkT1oDS4", tipo: "video", tags: ["política", "maga", "trump", "elecciones"], image: "https://img.youtube.com/vi/-wntkT1oDS4/maxresdefault.jpg" },
-                { title: "TRUMP ES el Caballo de Troya Tecnocrático", description: "La batalla por el control ha comenzado. La verdadera naturaleza del movimiento Trump.", url: "/articles/trump-cbdc/", fecha: "24/07/2025", video_id: "UEgEIzZ9dYo", tipo: "video", tags: ["economía", "cbdc", "trump", "tecnocracia"], image: "https://img.youtube.com/vi/UEgEIzZ9dYo/maxresdefault.jpg" },
-                { title: "El Gran Tablero Geopolítico - Brzezinski marca el Rumbo", description: "La estrategia geopolítica de Zbigniew Brzezinski y su influencia en el orden mundial actual.", url: "/articles/gran-tablero-brzezinski/", fecha: "05/07/2025", video_id: "QTDXeE8bey0", tipo: "video", tags: ["geopolítica", "brzezinski", "china", "rusia"], image: "https://img.youtube.com/vi/QTDXeE8bey0/maxresdefault.jpg" },
-                { title: "Los Ganadores del Nuevo Complejo Militar TECNOLÓGICO", description: "El entramado entre Silicon Valley, Wall Street y el complejo militar global.", url: "/articles/nuevo-complejo-militar/", fecha: "29/06/2025", video_id: "k3mX98Xo_qc", tipo: "video", tags: ["militar", "tecnología", "blackrock", "palantir"], image: "https://img.youtube.com/vi/k3mX98Xo_qc/maxresdefault.jpg" },
-                { title: "El Segundo Borrador del Orden Mundial", description: "Rediseño del orden financiero global, geopolítica, CBDC y nueva arquitectura del poder.", url: "/articles/segundo-borrador-orden-mundial/", fecha: "25/06/2025", video_id: "zYV-hGwE-RQ", tipo: "video", tags: ["geopolítica", "orden mundial", "cbdc", "medio oriente"], image: "https://img.youtube.com/vi/zYV-hGwE-RQ/maxresdefault.jpg" },
-                { title: "Epstein Inmersivo: La Red Global de Control", description: "Análisis profundo de la red de control global vinculada a Jeffrey Epstein.", url: "/articles/expediente-epstein-v2/", fecha: "15/06/2025", video_id: "5Kx0Acdv0qw", tipo: "video", tags: ["élites", "epstein", "maxwell", "vigilancia"], image: "https://img.youtube.com/vi/5Kx0Acdv0qw/maxresdefault.jpg" }
-            ];
-
-            // Usar fallback directamente para evitar problemas con fetch
-            init(fallback);
         });
 
         function init(data) {
-            // Ordenar por fecha
             allArticles = [...data].sort((a, b) => {
-                const da = new Date(a.fecha?.split('/').reverse().join('-') || '2025-01-01');
-                const db = new Date(b.fecha?.split('/').reverse().join('-') || '2025-01-01');
+                const da = new Date((a.fecha || '01/01/2025').split('/').reverse().join('-'));
+                const db = new Date((b.fecha || '01/01/2025').split('/').reverse().join('-'));
                 return db - da;
             });
-
             filteredArticles = [...allArticles];
             renderAll();
         }
@@ -1072,78 +432,109 @@
             updateCount();
         }
 
+        // ── Featured ─────────────────────────────────────────────
         function renderFeatured() {
             const container = document.getElementById('featured-container');
-            if (filteredArticles.length === 0) { container.innerHTML = ''; return; }
+            if (!container || filteredArticles.length === 0) return;
 
             const a = filteredArticles[0];
             const img = a.image || (a.video_id ? `https://img.youtube.com/vi/${a.video_id}/maxresdefault.jpg` : '');
-            const playBtn = a.video_id ? `<div class="play-button"><i class="fas fa-play"></i></div>` : '';
-            const videoLink = a.video_id ? `<a href="https://youtu.be/${a.video_id}" target="_blank" class="btn-gradient">Ver Video</a>` : '';
+            const youtubeUrl = a.video_id ? `https://youtu.be/${a.video_id}` : '';
 
             container.innerHTML = `
-                <div class="flex flex-col md:flex-row gap-8">
-                    <div class="md:w-1/2">
-                        <div class="video-thumbnail" style="height:320px;padding:0" onclick="${a.video_id ? `window.open('https://youtu.be/${a.video_id}','_blank')` : ''}">
-                            <img src="${img}" alt="${a.title}" onerror="this.src='https://img.youtube.com/vi/${a.video_id}/hqdefault.jpg'">
-                            ${playBtn}
+                <div class="featured-thumb" style="cursor:${youtubeUrl ? 'pointer' : 'default'}" ${youtubeUrl ? `onclick="window.open('${youtubeUrl}','_blank')"` : ''}>
+                    ${img ? `<img src="${img}" alt="${a.title}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='https://img.youtube.com/vi/${a.video_id}/hqdefault.jpg'">` : `<div style="width:100%;height:100%;background:#111;display:flex;align-items:center;justify-content:center;min-height:280px;"><i class="fas fa-file-alt" style="font-size:3rem;color:#333;"></i></div>`}
+                    ${youtubeUrl ? `
+                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;" class="featured-play-overlay">
+                        <div style="width:70px;height:70px;border-radius:50%;background:rgba(0,0,0,0.8);border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;">
+                            <i class="fas fa-play" style="color:var(--gold);font-size:1.5rem;margin-left:4px;"></i>
                         </div>
+                    </div>` : ''}
+                    <span style="position:absolute;top:12px;left:12px;background:${a.tipo === 'video' ? 'var(--red)' : 'var(--gold)'};color:${a.tipo === 'video' ? 'white' : '#000'};padding:4px 12px;border-radius:20px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;">
+                        ${a.tipo === 'video' ? '<i class="fab fa-youtube mr-1"></i>Video' : '<i class="fas fa-file-alt mr-1"></i>Artículo'}
+                    </span>
+                </div>
+                <div class="featured-body">
+                    <span class="featured-label">
+                        <i class="fas fa-star"></i> Análisis Destacado
+                    </span>
+                    <span style="display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#000;padding:3px 10px;border-radius:20px;font-size:0.7rem;font-weight:600;margin-bottom:0.75rem;">${a.fecha}</span>
+                    <h3 class="featured-title">${a.title}</h3>
+                    <p class="featured-desc">${a.description}</p>
+                    <div class="featured-actions">
+                        <a href="${a.url}" class="card-btn card-btn-outline">
+                            <i class="fas fa-arrow-right"></i> Leer Análisis
+                        </a>
+                        ${youtubeUrl ? `
+                        <a href="${youtubeUrl}" target="_blank" rel="noopener noreferrer" class="card-btn card-btn-primary">
+                            <i class="fab fa-youtube"></i> Ver Video
+                        </a>` : ''}
                     </div>
-                    <div class="md:w-1/2 flex flex-col justify-center">
-                        <span class="date-badge mb-4">${a.fecha}</span>
-                        <h4 class="text-2xl md:text-3xl font-bold mb-4 gold-text">${a.title}</h4>
-                        <p class="text-gray-300 text-lg mb-6">${a.description}</p>
-                        <div class="flex gap-4">
-                            <a href="${a.url}" class="btn-gradient">Leer Análisis</a>
-                            ${videoLink}
-                        </div>
-                    </div>
-                </div>`;
+                </div>
+            `;
+
+            // Hover effect on featured play overlay
+            const thumb = container.querySelector('.featured-thumb');
+            const overlay = container.querySelector('.featured-play-overlay');
+            if (thumb && overlay) {
+                thumb.addEventListener('mouseenter', () => overlay.style.opacity = '1');
+                thumb.addEventListener('mouseleave', () => overlay.style.opacity = '0');
+            }
         }
 
+        // ── Grid ─────────────────────────────────────────────────
         function renderGrid() {
             const container = document.getElementById('grid-container');
+            if (!container) return;
+
             const articles = filteredArticles.slice(1, displayedCount + 1);
 
-            if (articles.length === 0) { container.innerHTML = '<p class="text-gray-400">No hay artículos</p>'; return; }
+            if (articles.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column:1/-1;text-align:center;padding:4rem 0;">
+                        <i class="fas fa-search" style="font-size:3rem;color:#333;margin-bottom:1rem;display:block;"></i>
+                        <p style="color:var(--text-muted);font-size:1.1rem;">No se encontraron artículos</p>
+                    </div>`;
+                document.getElementById('load-more-btn').style.display = 'none';
+                return;
+            }
 
             container.innerHTML = articles.map((a, i) => {
                 const img = a.image || (a.video_id ? `https://img.youtube.com/vi/${a.video_id}/hqdefault.jpg` : '');
-                const isVideo = a.video_id;
-                const tipoLabel = isVideo ? 'VIDEO' : 'ARTÍCULO';
-                const tipoClass = isVideo ? 'video' : 'articulo';
+                const isVideo = !!a.video_id;
                 const youtubeUrl = isVideo ? `https://youtu.be/${a.video_id}` : '';
-                // El thumbnail SIEMPRE lleva al artículo, YouTube se abre en botón separado
-                const thumbLink = a.url;
+                const tipoClass = a.tipo === 'video' ? 'video' : 'articulo';
+                const tipoLabel = a.tipo === 'video' ? 'Video' : 'Artículo';
 
                 return `
-                <article class="article-card" style="animation-delay: ${i * 0.1}s">
-                    <a href="${thumbLink}" class="card-thumb-link">
+                <article class="article-card" style="animation-delay:${i * 0.08}s">
+                    <a href="${a.url}" class="card-thumb-link" style="display:block;text-decoration:none;border:none;">
                         <div class="card-thumb">
-                            <img src="${img}" alt="${a.title}" onerror="this.src='https://img.youtube.com/vi/${a.video_id}/hqdefault.jpg'" loading="lazy">
-                            <span class="card-badge ${tipoClass}">${tipoLabel}</span>
-                            ${isVideo ? `
-                            <div class="play-overlay">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            ` : ''}
+                            ${img
+                                ? `<img src="${img}" alt="${a.title}" loading="lazy" onerror="this.src='https://img.youtube.com/vi/${a.video_id || ''}/hqdefault.jpg'">`
+                                : `<div style="width:100%;height:100%;background:#111;display:flex;align-items:center;justify-content:center;"><i class="fas fa-file-alt" style="font-size:2.5rem;color:#333;"></i></div>`
+                            }
+                            <span class="card-badge ${tipoClass}">
+                                ${isVideo ? '<i class="fab fa-youtube mr-1"></i>' : '<i class="fas fa-file-alt mr-1"></i>'}${tipoLabel}
+                            </span>
+                            ${isVideo ? `<div class="play-overlay"><i class="fas fa-play"></i></div>` : ''}
                         </div>
                     </a>
                     <div class="card-body">
-                        <span class="date-badge text-xs">${a.fecha}</span>
-                        <h4 class="card-title">${a.title}</h4>
+                        <span class="date-badge">${a.fecha}</span>
+                        <h4 class="card-title">
+                            <a href="${a.url}" style="color:inherit;text-decoration:none;border:none;">${a.title}</a>
+                        </h4>
                         <p class="card-desc">${a.description}</p>
                         ${a.tags && a.tags.length > 0 ? `
                         <div class="card-tags">
                             ${a.tags.slice(0, 3).map(t => `<span>#${t}</span>`).join('')}
-                        </div>
-                        ` : ''}
+                        </div>` : ''}
                         <div class="card-actions">
                             ${isVideo ? `
-                            <a href="${youtubeUrl}" target="_blank" class="card-btn card-btn-primary">
+                            <a href="${youtubeUrl}" target="_blank" rel="noopener noreferrer" class="card-btn card-btn-primary">
                                 <i class="fab fa-youtube"></i> Ver Video
-                            </a>
-                            ` : ''}
+                            </a>` : ''}
                             <a href="${a.url}" class="card-btn card-btn-outline">
                                 <i class="fas fa-arrow-right"></i> Leer Más
                             </a>
@@ -1152,59 +543,54 @@
                 </article>`;
             }).join('');
 
-            // Botón cargar más
             const btn = document.getElementById('load-more-btn');
-            btn.classList.toggle('hidden', displayedCount >= filteredArticles.length);
+            btn.style.display = (displayedCount + 1 < filteredArticles.length) ? 'inline-flex' : 'none';
         }
 
-        // Archive con desplegable
-        let archiveExpanded = false;
+        // ── Archive ───────────────────────────────────────────────
+        function renderArchive() {
+            const container = document.getElementById('archive-list');
+            if (!container) return;
+
+            const items = allArticles.slice(0, 20);
+            container.innerHTML = items.map(a => `
+                <a href="${a.url}" style="display:block;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;border-left:none;border-right:none;border-top:none;transition:padding-left 0.2s;">
+                    <span style="display:block;font-size:0.7rem;color:var(--gold);margin-bottom:2px;">${a.fecha}</span>
+                    <span style="display:block;font-size:0.82rem;color:var(--text-muted);line-height:1.4;">${a.title}</span>
+                </a>
+            `).join('');
+
+            const toggle = document.getElementById('archive-toggle');
+            if (toggle) toggle.style.display = allArticles.length > 20 ? 'block' : 'none';
+        }
+
         function toggleArchive() {
             archiveExpanded = !archiveExpanded;
             const list = document.getElementById('archive-list');
             const toggle = document.getElementById('archive-toggle');
-
             if (archiveExpanded) {
                 list.style.maxHeight = 'none';
                 toggle.textContent = 'Ver menos ▲';
             } else {
-                list.style.maxHeight = '300px';
+                list.style.maxHeight = '280px';
                 toggle.textContent = 'Ver más ▼';
             }
         }
 
-        function renderArchive() {
-            const container = document.getElementById('archive-list');
-            container.innerHTML = allArticles.slice(0, 20).map(a => `
-                <a href="${a.url}" class="archive-item">
-                    <span class="archive-date">${a.fecha}</span>
-                    <span class="archive-title">${a.title}</span>
-                </a>
-            `).join('');
-
-            // Ocultar toggle si hay pocos
-            const toggle = document.getElementById('archive-toggle');
-            toggle.style.display = allArticles.length > 20 ? 'block' : 'none';
-        }
-
+        // ── Tags ─────────────────────────────────────────────────
         function renderTags() {
-            const tags = [...new Set(allArticles.flatMap(a => a.tags || []))];
             const container = document.getElementById('tags-cloud');
-            container.innerHTML = tags.map(tag =>
-                `<span class="tag" onclick="searchArticles('${tag}')">${tag}</span>`
-            ).join('');
+            if (!container) return;
+
+            const tags = [...new Set(allArticles.flatMap(a => a.tags || []))].slice(0, 20);
+            container.innerHTML = tags.map(tag => `
+                <button onclick="searchArticles('${tag}')" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:var(--text-muted);padding:4px 10px;border-radius:15px;font-size:0.75rem;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='#000';this.style.borderColor='var(--gold)';" onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.color='var(--text-muted)';this.style.borderColor='rgba(255,255,255,0.08)';">
+                    ${tag}
+                </button>
+            `).join('');
         }
 
-        function updateCount() {
-            document.getElementById('article-count').textContent = `${filteredArticles.length} artículos`;
-            document.getElementById('grilla-titulo').textContent =
-                currentTipo === 'all' ? 'Todos los Análisis' :
-                currentTipo === 'video' ? 'Videos' : 'Artículos';
-        }
-
-        // Filtros
-        let currentTipo = 'all';
-
+        // ── Filters ───────────────────────────────────────────────
         function filterByTipo(tipo) {
             currentTipo = tipo;
             document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -1214,21 +600,23 @@
         }
 
         function searchArticles(query) {
-            document.getElementById('search-input').value = query;
+            const input = document.getElementById('search-input');
+            if (input) input.value = query;
             applyFilters(query.toLowerCase());
         }
 
         function applyFilters(search = null) {
+            const q = search !== null ? search : (document.getElementById('search-input')?.value || '').toLowerCase();
             filteredArticles = allArticles.filter(a => {
                 const matchesTipo = currentTipo === 'all' || a.tipo === currentTipo;
-                const matchesSearch = !search ||
-                    a.title?.toLowerCase().includes(search) ||
-                    a.description?.toLowerCase().includes(search) ||
-                    a.tags?.some(t => t.toLowerCase().includes(search));
+                const matchesSearch = !q ||
+                    a.title?.toLowerCase().includes(q) ||
+                    a.description?.toLowerCase().includes(q) ||
+                    a.tags?.some(t => t.toLowerCase().includes(q));
                 return matchesTipo && matchesSearch;
             });
-
-            displayedCount = 100;
+            displayedCount = 6;
+            renderFeatured();
             renderGrid();
             updateCount();
         }
@@ -1238,18 +626,54 @@
             renderGrid();
         }
 
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
-            document.getElementById('mobile-menu')?.classList.toggle('open');
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('site-header');
-            if (header) {
-                header.classList.toggle('scrolled', window.scrollY > 50);
+        function updateCount() {
+            const countEl = document.getElementById('article-count');
+            const titleEl = document.getElementById('grilla-titulo');
+            if (countEl) countEl.textContent = `(${filteredArticles.length})`;
+            if (titleEl) {
+                titleEl.textContent =
+                    currentTipo === 'all' ? 'Todos los Análisis' :
+                    currentTipo === 'video' ? 'Videos' : 'Artículos';
             }
-        });
+        }
     </script>
+
+    <!-- Responsive sidebar -->
+    <style>
+        @media (max-width: 1024px) {
+            #main-layout {
+                grid-template-columns: 1fr !important;
+            }
+            #main-layout aside {
+                position: static !important;
+            }
+        }
+        .featured-thumb {
+            position: relative;
+        }
+        .card-thumb-link:hover .play-overlay {
+            opacity: 1;
+        }
+        /* Sidebar archive scrollbar */
+        #archive-list::-webkit-scrollbar { width: 4px; }
+        #archive-list::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+        /* Search input */
+        #search-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-body);
+            padding: 10px 14px;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+        #search-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        #search-input::placeholder { color: var(--text-muted); }
+    </style>
+
 </body>
 </html>
